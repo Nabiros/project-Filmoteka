@@ -170,7 +170,7 @@
 
 .header-input__field {
   margin-top: 40px;
-  padding: 0px;
+  padding: 3px 5px;
   width: 100%;
 
   color: var(--header-text);
@@ -244,7 +244,7 @@
   }
 }
 
-.hidden {
+.is-hidden {
   display: none;
 }
 
