@@ -1,2 +1,7 @@
+@import './variables';
+@import './mixin';
 @import './base';
-@import './cards';
+@import './components/cards';
+@import './components/header';
+@import './components/footer';
+@import './components/modal';

@@ -1,19 +1,19 @@
 {
-  "name": "project-Filmoteka",
+  "name": "parcel-project-template",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://Nabiros.github.io/project-filmoteka",
+  "homepage": "https://Nabiros.github.io/project-Filmoteka",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /project-filmoteka/"
+    "build": "parcel build src/*.html --public-url /project-Filmoteka/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nabiros/project-filmoteka"
+    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
   },
   "keywords": [],
-  "author": "NaZEX",
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
