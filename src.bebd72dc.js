@@ -7,4 +7,4 @@ const e=document.querySelector("[data-modal-close]"),d=document.querySelector("[
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/header-nav-buttons"),require("./js/modal");
 },{"./sass/main.scss":"clu1","./js/header-nav-buttons":"sgyq","./js/modal":"RSqK"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-Filmoteka/src.bdcd54c5.js.map
+//# sourceMappingURL=/project-Filmoteka/src.bebd72dc.js.map
