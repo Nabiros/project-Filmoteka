@@ -5,44 +5,38 @@ export default class NewApiService {
     this.searchQuery = '';
     this.page = 1;
   }
-  fetchPopularMovie() {
+  
+  async fetchPopularMovie() {
     const url = `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${this.page}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(({ results }) => {
-        return results;
-      });
-  }
-  fetchSearchMovie() {
-    const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(({ results }) => {
-        return results;
-      });
-  }
- 
-  fetchGenres() {
-    const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        return data.genres;
-      });
+    const response = await fetch(url);
+    const { results } = await response.json();
+    return results;
   }
 
-  addGenresToMovieObj() {
-    return this.fetchPopularMovie().then(data => {
-      return this.fetchGenres().then(genresList => {
-        return data.map(movie => ({
-          ...movie,
-          release_date: movie.release_date.split('-')[0],
-          genres: movie.genre_ids
-            .map(id => genresList.filter(el => el.id === id))
-            .flat(),
-        }));
-      });
-    });
+  async fetchSearchMovie() {
+    const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
+    const response = await fetch(url);
+    const { results } = await response.json();
+    return results;
+  }
+ 
+  async fetchGenres() {
+    const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.genres;
+  }
+
+  async addGenresToMovieObj() {
+    const data = await this.fetchPopularMovie();
+    const genresList = await this.fetchGenres();
+    return data.map(movie => ({
+      ...movie,
+      release_date: movie.release_date.split('-')[0],
+      genres: movie.genre_ids
+        .map(id => genresList.filter(el => el.id === id))
+        .flat(),
+    }));
   }
 
   get query() {
