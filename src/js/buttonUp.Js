@@ -7,7 +7,7 @@ function upButtonHandler() {
 }
 let scroll = 0;
 const btnUp = document.querySelector('.btnUp');
-window.addEventListener('scroll', function (e) {
+window.addEventListener('scroll', function () {
   scroll = window.scrollY;
   if (scroll > 0) {
     btnUp.classList.remove('visually-hidden');
