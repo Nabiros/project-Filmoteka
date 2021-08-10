@@ -7,7 +7,7 @@ const listElement = document.querySelector('.js-card');
 const logoEl = document.querySelector('.js-main-logo');
 // console.log(logoEl)
 const btnUp = document.querySelector('.btnUp');
-btnUp.addEventListener('click', upButtonHandler);
+// btnUp.addEventListener('click', upButtonHandler);
 
 const newApiService = new NewApiService();
 
