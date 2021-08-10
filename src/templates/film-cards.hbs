@@ -1,0 +1,21 @@
+{{#each this}}
+  <li class='card' data-action='{{id}}'>
+    <a class='card__item' href='#'>
+      {{! <img class="card__img" src="#" alt="#" loading="lazy" /> }}
+      <img
+        class='card__img'
+        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+        alt='{{title}} {{name}}'
+        width='100%'
+        data-id='{{id}}'
+        onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';"
+        loading='lazy'
+      />
+      <span class='card__vote_average'>{{vote_average}}</span>
+    </a>
+    <h2 class='card__name'>{{title}} {{name}}</h2>
+    <div class='card__info'>
+      <span class='card__genre'>{{#each genres}} {{name}} {{/each}}</span> | <span class='card__year'>{{release_date}}</span>
+    </div>
+  </li>
+{{/each}}
