@@ -1,11 +1,3 @@
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 0;
-  padding-bottom: 0;
-  color: var(--footer-text);
-}
-
 .card {
   border: none;
   cursor: pointer;
@@ -14,8 +6,6 @@
   margin: 15px;
   flex-basis: calc((100% - 3 * 30px) / 3);
 }
-
-
 
 .card:hover,
 .card:focus {
