@@ -21,4 +21,4 @@ module.exports="/project-Filmoteka/something_went_wrong.67c29574.webp";
 },{"../templates/film-cards.hbs":"emJv","./apiServise":"Ns9e","../images/something_went_wrong.webp":"hhLH","../js/buttonUp.js":"nuS5"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/header-nav-buttons"),require("./js/modal"),require("./js/cardRender");
 },{"./sass/main.scss":"clu1","./js/header-nav-buttons":"sgyq","./js/modal":"RSqK","./js/cardRender":"vSA4"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-Filmoteka/src.4ccc3963.js.map
+//# sourceMappingURL=/project-Filmoteka/src.3d9bde96.js.map
