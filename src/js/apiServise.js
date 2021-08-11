@@ -39,6 +39,15 @@ export default class NewApiService {
     }));
   }
 
+  async fetchMovieById(movie_id) {
+    const url = `${BASE_URL}/movie/${movie_id}?api_key=${KEY}&language=en-US`;
+    const response = await fetch(url);
+    const {results} = await response.json();
+    return results;
+  }
+
+ 
+
   get query() {
     return this.searchQuery;
   }

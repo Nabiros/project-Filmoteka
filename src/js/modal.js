@@ -1,11 +1,20 @@
+import NewApiService from './apiServise.js';  
+import cardModalFilm from '../templates/card-modal.hbs';
+import errorUrl from '../images/something_went_wrong.webp';
+
 const galleryFilms = document.querySelector('.js-card');
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
+const modalMovieCard = document.querySelector('.js-card-modal');
+
+const newApiService = new NewApiService();
 
 galleryFilms.addEventListener('click', modalWindowOpenHandler);
 
 function modalWindowOpenHandler(event) {
   event.preventDefault();
+  const movieID = event.target.dataset.id;
+
   closeModalBtn.addEventListener('click', modalWindowCloseHandler);
   modal.addEventListener('click', backdropClickHandler);
   window.addEventListener('keydown', escKeyPressHandler);
@@ -13,7 +22,8 @@ function modalWindowOpenHandler(event) {
     if (event.target.nodeName !== 'IMG') {
         return;
     }
-   modal.classList.remove('visually-hidden');
+  modal.classList.remove('visually-hidden');
+  renderMovieByID(movieID);
 
 }
 
@@ -36,4 +46,21 @@ function escKeyPressHandler(event) {
   if (event.code === 'Escape') {
       modal.classList.add('visually-hidden');
   }
+}
+
+
+export function renderMovieByID(movieID) {
+  newApiService.page = 1;
+  newApiService
+    .fetchMovieById(movieID)
+    .then(renderModalFilm)
+    .catch(err => {
+      console.log('error in function render');
+      modalMovieCard.innerHTML = `<img  src="${errorUrl}" />`;
+    });
+}
+
+
+function renderModalFilm(movie) {
+  modalMovieCard.innerHTML = cardModalFilm(movie);
 }
