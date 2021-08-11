@@ -39,13 +39,10 @@ export default class NewApiService {
     }));
   }
 
-  // async searchFilmByWord(searchWord) {
-  //   const response = await axios.get(
-  //     `${SEARCH_MOVIE}?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}`,
-  //    );
-  //   const movies = await response.data.results;
-  //   return movies;
-  // }
+  //  resetPage () {
+  //       this.page = 1;
+  //   };
+
 
   get query() {
     return this.searchQuery;

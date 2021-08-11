@@ -5,7 +5,8 @@ import Notiflix from 'notiflix';
 const { searchInput, listElement } = refs;
 
 const SearchFilmApiServis = new FilmApiServis();
-searchInput.addEventListener('submit', onSearchFilm)
+
+searchInput.addEventListener('submit', onSearchFilm);
 
 async function onSearchFilm(e) {
     e.preventDefault();
@@ -17,7 +18,7 @@ async function onSearchFilm(e) {
             clearFilmCard();
              Notiflix.Notify.failure('Search result not successful. Enter the correct movie name and ')
         } else {
-            appendFilmCardsMarkup(result.query);
+            appendFilmCardsMarkup(result.page);
             filmCard.refresh();
         }
     } catch (error) {
@@ -26,7 +27,7 @@ async function onSearchFilm(e) {
 }
 
 function appendFilmCardsMarkup(data){
-    listElement.insertAdjacentHTML('beforeend', cards(data));
+    listElement.insertAdjacentHTML('beforeend', filmCard(data));
 };
 
 function clearFilmCard () {
