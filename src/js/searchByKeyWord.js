@@ -1,7 +1,7 @@
 import FilmApiServis from './apiServise';
 import refs from './refs';
 import filmCard from '../templates/film-cards.hbs';
-import Notiflix from 'Notiflix';
+import Notiflix from 'notiflix';
 const { searchInput, listElement } = refs;
 
 const SearchFilmApiServis = new FilmApiServis();
