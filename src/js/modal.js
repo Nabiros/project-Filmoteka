@@ -64,3 +64,4 @@ export function renderMovieByID(movieID) {
 function renderModalFilm(movie) {
   modalMovieCard.innerHTML = cardModalFilm(movie);
 }
+
