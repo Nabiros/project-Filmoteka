@@ -10,6 +10,8 @@
   @include transition(visibility);
   @include transition(opacity);
   overflow-y: auto;
+  
+  z-index: 2;
 }
 
 .wrapper-modal {
