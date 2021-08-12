@@ -1,0 +1,39 @@
+        <div class="card-poster">
+            <picture>
+                <img class='card-poster__img' src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt='{{title}}' width='100%'
+                    data-id='{{id}}'
+                    onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';" />
+            </picture>
+        </div>
+        <div class="card-records">
+            <h1 class="card-records__title">{{title}}</h1>
+            <div class="card-records__info">
+                <ul class="card-records__items">
+                    <li class="card-records__item">Vote / Votes</li>
+                    <li class="card-records__item">Popularity</li>
+                    <li class="card-records__item">Original Title</li>
+                    <li class="card-records__item">Genre</li>
+                </ul>
+    
+                <ul class="card-records__subitems">
+                    <li class="card-records__subitem">
+                        <span class="card-records__vote">{{vote_average}}</span> /
+                        <span class="card-records__votes">{{vote_count}}</span>
+                    </li>
+                    <li class="card-records__subitem">{{popularity}}</li>
+                    <li class="card-records__subitem uppercase">{{original_title}}</li>
+                    <li class="card-records__subitem">{{#each genres}} {{name}}{{#unless @last}},{{/unless}} {{/each}}</li>
+                </ul>
+            </div>
+    
+            <div>
+                <h2 class="card-records__about">About</h2>
+                <p class="card-records_description">{{overview}}</p>
+            </div>
+
+            <div class="card-buttons">
+                <button type="button" class="card-button" data-action="">add to Watched</button>
+                <button type="button" class="card-button" data-action="">add to queue</button>
+            </div>
+    
+        </div>
