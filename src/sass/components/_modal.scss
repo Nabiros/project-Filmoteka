@@ -10,7 +10,7 @@
   @include transition(visibility);
   @include transition(opacity);
   overflow-y: auto;
-  
+
   z-index: 2;
 }
 
@@ -57,6 +57,14 @@
 .close {
   width: 18px;
   height: 18px;
+}
+
+.js-card-modal {
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 }
 
 .card-poster {
@@ -190,13 +198,14 @@
 }
 
 .card-button {
+  width: 112.58px;
+  height: 44px;
+  padding: 0 9px;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  width: 112.58px;
-  height: 44px;
   border: 1px solid var(--title-text);
-  background: transparent;
+  background-color: transparent;
   box-sizing: border-box;
   border-radius: 5px;
   text-transform: uppercase;
@@ -207,7 +216,7 @@
     color: var(--header-text);
     background: var(--rating-color);
     @include transition(color);
-    @include transition(background);
+    @include transition(background-color);
     @include transition(border);
   }
 

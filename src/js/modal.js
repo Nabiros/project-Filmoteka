@@ -1,11 +1,11 @@
 import NewApiService from './apiServise.js';  
-import cardModalFilm from '../templates/card-modal.hbs';
+import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 
 const galleryFilms = document.querySelector('.js-card');
-const closeModalBtn = document.querySelector('[data-modal-close]');
-const modal = document.querySelector('[data-modal]');
-const modalMovieCard = document.querySelector('.js-card-modal');
+const closeModalBtn = document.querySelector('.js-close-btn');
+const modal = document.querySelector('.js-backdrop');
+const movieModalCard = document.querySelector('.js-card-modal');
 
 const newApiService = new NewApiService();
 
@@ -34,6 +34,7 @@ function modalWindowCloseHandler() {
   window.removeEventListener('keydown', escKeyPressHandler);
       
   modal.classList.add('visually-hidden');
+  movieModalCard.innerHTML = '';
 }
 
 function backdropClickHandler(event) {
@@ -50,18 +51,17 @@ function escKeyPressHandler(event) {
 
 
 export function renderMovieByID(movieID) {
-  newApiService.page = 1;
   newApiService
     .fetchMovieById(movieID)
-    .then(renderModalFilm)
+    .then(renderMovieModal)
     .catch(err => {
       console.log('error in function render');
-      modalMovieCard.innerHTML = `<img  src="${errorUrl}" />`;
+      movieModalCard.innerHTML = `<img  src="${errorUrl}" />`;
     });
 }
 
 
-function renderModalFilm(movie) {
-  modalMovieCard.innerHTML = cardModalFilm(movie);
+function renderMovieModal(movie) {
+  movieModalCard.innerHTML = movieModalTemplate(movie);
 }
 
