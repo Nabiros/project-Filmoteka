@@ -1,11 +1,10 @@
-import NewApiService from './apiServise.js';  
+import refs from './refs';
+
+import NewApiService from './apiServise.js';
 import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 
-const galleryFilms = document.querySelector('.js-card');
-const closeModalBtn = document.querySelector('.js-close-btn');
-const modal = document.querySelector('.js-backdrop');
-const movieModalCard = document.querySelector('.js-card-modal');
+const { galleryFilms, closeModalBtn, modal, movieModalCard } = refs;
 
 const newApiService = new NewApiService();
 

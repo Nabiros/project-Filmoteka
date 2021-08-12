@@ -1,12 +1,11 @@
+import refs from './refs';
 import cardFilms from '../templates/film-cards.hbs';
 import NewApiService from './apiServise';
 import errorUrl from '../images/something_went_wrong.webp';
 import upButtonHandler from '../js/buttonUp.js';
 
-const listElement = document.querySelector('.js-card');
-const logoEl = document.querySelector('.js-main-logo');
-// console.log(logoEl)
-const btnUp = document.querySelector('.btnUp');
+const { listElement, logoEl, btnUp } = refs;
+
 btnUp.addEventListener('click', upButtonHandler);
 
 const newApiService = new NewApiService();

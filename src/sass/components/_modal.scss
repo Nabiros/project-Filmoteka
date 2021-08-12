@@ -33,30 +33,29 @@
     padding-right: 30px;
   }
 }
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background-color: var(--header-text);
-  fill: var(--title-text);
-  border: none;
-  cursor: pointer;
-
-  &-svg:hover,
-  &-svg:focus {
-    fill: var(--accent-color);
-  }
-}
-
 .close {
   width: 18px;
   height: 18px;
+
+  &-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: var(--header-text);
+    fill: var(--title-text);
+    border: none;
+    cursor: pointer;
+
+    &-svg:hover,
+    &-svg:focus {
+      fill: var(--accent-color);
+    }
+  }
 }
 
 .js-card-modal {

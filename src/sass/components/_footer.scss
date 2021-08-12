@@ -1,51 +1,53 @@
 .footer {
+  margin-top: 20px;
   height: 100px;
   background-color: var(--backgr-footer);
 
   @media screen and(min-width: 768px) {
+    margin-top: 60px;
     height: 77px;
   }
-}
 
-.footer-caption {
-  padding: 0px;
-  padding-top: 29px;
+  &-caption {
+    padding: 0px;
+    padding-top: 29px;
 
-  text-align: center;
+    text-align: center;
 
-  &__img {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+    &__img {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
 
-  @media screen and (min-width: 768px) {
-    @include flex(center);
-    flex-wrap: nowrap;
-    padding-top: 30px;
-  }
-}
+    @media screen and (min-width: 768px) {
+      @include flex(center);
+      flex-wrap: nowrap;
+      padding-top: 30px;
+    }
 
-.footer-caption__text {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.17;
-  color: var(--footer-text);
+    &__text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.17;
+      color: var(--footer-text);
 
-  &:last-child {
-    margin-top: 10px;
+      &:last-child {
+        margin-top: 10px;
 
-    @media screen and(min-width: 768px) {
-      margin-left: 3px;
-      margin-top: 0px;
+        @media screen and(min-width: 768px) {
+          margin-left: 3px;
+          margin-top: 0px;
+        }
+      }
+
+      @media screen and(min-width: 768px) {
+        font-size: 16px;
+      }
     }
   }
 
-  @media screen and(min-width: 768px) {
-    font-size: 16px;
+  &-text-dec {
+    text-decoration: underline;
+    text-decoration-color: var(--footer-text);
   }
-}
-
-.footer-text-dec {
-  text-decoration: underline;
-  text-decoration-color: var(--footer-text);
 }

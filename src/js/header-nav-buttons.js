@@ -1,8 +1,6 @@
-const headerInput = document.querySelector('.header-input');
-const homeBtn = document.querySelector('.header-home__btn');
-const myLibraryBtn = document.querySelector('.header-library__btn');
-const headerStyle = document.querySelector('header');
-const libButtons = document.querySelector('.library-buttons');
+import refs from './refs';
+
+const {headerInput, homeBtn, myLibraryBtn, headerStyle, libButtons} = refs;
 
 homeBtn.addEventListener('click', onHomeBtnClick);
 myLibraryBtn.addEventListener('click', onLibraryBtnClick);
