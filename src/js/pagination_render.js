@@ -6,7 +6,6 @@ import upButtonHandler from './buttonUp.js';
 import Pagination from 'tui-pagination';
 
 const { listElement, btnUp, paginationContainer } = refs;
-
 btnUp.addEventListener('click', upButtonHandler);
 
 const newApiService = new NewApiService();
