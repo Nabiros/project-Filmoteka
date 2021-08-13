@@ -1,8 +1,8 @@
 import 'js-loading-overlay';
 
-
-JsLoadingOverlay.show({
-  "overlayBackgroundColor": "#733A3A",
+export default function() {
+  JsLoadingOverlay.show({
+  "overlayBackgroundColor": "black",
   "overlayOpacity": "0.5",
   "spinnerIcon": "ball-fall",
   "spinnerColor": "#41120A",
@@ -15,18 +15,21 @@ JsLoadingOverlay.show({
   "lockScroll": false,
   "overlayZIndex": 9998,
   "spinnerZIndex": 9999
-});
+  });
 
-setTimeout(() => {
-    JsLoadingOverlay.show(configs);
+  setTimeout(() => {
+    JsLoadingOverlay.show();
 }, 0);
-
-
 
 setTimeout(() => {
     JsLoadingOverlay.hide();
-}, 2000);
+}, 500);
 
-// JsLoadingOverlay.hide();
+JsLoadingOverlay.hide();
+
+}
+
+
+
 
 
