@@ -1,11 +1,20 @@
-const galleryFilms = document.querySelector('.js-card');
-const closeModalBtn = document.querySelector('[data-modal-close]');
-const modal = document.querySelector('[data-modal]');
+import refs from './refs';
+
+import NewApiService from './apiServise.js';
+import movieModalTemplate from '../templates/card-modal.hbs';
+import errorUrl from '../images/something_went_wrong.webp';
+import spinner from './spinner';
+
+const { galleryFilms, closeModalBtn, modal, movieModalCard } = refs;
+
+const newApiService = new NewApiService();
 
 galleryFilms.addEventListener('click', modalWindowOpenHandler);
 
 function modalWindowOpenHandler(event) {
   event.preventDefault();
+  const movieID = event.target.dataset.id;
+
   closeModalBtn.addEventListener('click', modalWindowCloseHandler);
   modal.addEventListener('click', backdropClickHandler);
   window.addEventListener('keydown', escKeyPressHandler);
@@ -13,7 +22,8 @@ function modalWindowOpenHandler(event) {
     if (event.target.nodeName !== 'IMG') {
         return;
     }
-   modal.classList.remove('visually-hidden');
+  modal.classList.remove('visually-hidden');
+  renderMovieByID(movieID);
 
 }
 
@@ -24,6 +34,7 @@ function modalWindowCloseHandler() {
   window.removeEventListener('keydown', escKeyPressHandler);
       
   modal.classList.add('visually-hidden');
+  movieModalCard.innerHTML = '';
 }
 
 function backdropClickHandler(event) {
@@ -37,3 +48,20 @@ function escKeyPressHandler(event) {
       modal.classList.add('visually-hidden');
   }
 }
+
+
+export function renderMovieByID(movieID) {
+  newApiService
+    .fetchMovieById(movieID)
+    .then(renderMovieModal)
+    .catch(err => {
+      console.log('error in function render');
+      movieModalCard.innerHTML = `<img  src="${errorUrl}" />`;
+    });
+}
+
+
+function renderMovieModal(movie) {
+  movieModalCard.innerHTML = movieModalTemplate(movie);
+}
+
