@@ -29,4 +29,4 @@ module.exports="/project-Filmoteka/something_went_wrong.67c29574.webp";
 },{"./refs":"VyiV","../templates/film-cards.hbs":"emJv","./apiServise":"Ns9e","../images/something_went_wrong.webp":"hhLH","../js/buttonUp.js":"nuS5"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/header-nav-buttons"),require("./js/modal"),require("./js/cardRender"),require("./js/spinner");
 },{"./sass/main.scss":"clu1","./js/header-nav-buttons":"sgyq","./js/modal":"RSqK","./js/cardRender":"vSA4","./js/spinner":"Sc1o"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-Filmoteka/src.415eb12c.js.map
+//# sourceMappingURL=/project-Filmoteka/src.4cc06f1b.js.map
