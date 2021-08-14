@@ -5,50 +5,61 @@ import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 import spinner from './spinner';
 
-const { galleryFilms, closeModalBtn, modal, movieModalCard } = refs;
+const { listElement, closeModalBtn, modal, movieModalCard } = refs;
 
 const newApiService = new NewApiService();
 
-galleryFilms.addEventListener('click', modalWindowOpenHandler);
+listElement.addEventListener('click', modalWindowOpenHandler);
 
 function modalWindowOpenHandler(event) {
-  modal.classList.remove('visually-hidden');
 
   event.preventDefault();
   
   const movieID = event.target.dataset.id;
-
+  // const movieID = event.target.dataset.action;
+  
   closeModalBtn.addEventListener('click', modalWindowCloseHandler);
   modal.addEventListener('click', backdropClickHandler);
   window.addEventListener('keydown', escKeyPressHandler);
-
+  
     if (event.target.nodeName !== 'IMG') {
         return;
-  }
-  spinner();
-  renderMovieByID(movieID);
+    }
+    // if (event.target.tagName !== 'LI' && event.target.className !== 'card') {
+  //   return;
+  // }
+    spinner();
+    modal.classList.remove('visually-hidden');
+    document.body.style.overflow = 'hidden';
+    renderMovieByID(movieID);
 
 }
 
 
-function modalWindowCloseHandler() {
+function modalWindowCloseHandler(event) {
+  event.preventDefault();
   closeModalBtn.removeEventListener('click', modalWindowCloseHandler);
   modal.removeEventListener('click', backdropClickHandler);
   window.removeEventListener('keydown', escKeyPressHandler);
-      
+
   modal.classList.add('visually-hidden');
   movieModalCard.innerHTML = '';
+  document.body.style.overflow = '';
 }
 
 function backdropClickHandler(event) {
   if (event.currentTarget === event.target) {
-      modal.classList.add('visually-hidden');
+    modal.classList.add('visually-hidden');
+    movieModalCard.innerHTML = '';
+    document.body.style.overflow = '';
   }
 }
 
 function escKeyPressHandler(event) {
   if (event.code === 'Escape') {
-      modal.classList.add('visually-hidden');
+    modal.classList.add('visually-hidden');
+    movieModalCard.innerHTML = '';
+    document.body.style.overflow = '';
   }
 }
 
