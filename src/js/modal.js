@@ -1,5 +1,4 @@
 import refs from './refs';
-
 import NewApiService from './apiServise.js';
 import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
@@ -12,29 +11,26 @@ const newApiService = new NewApiService();
 listElement.addEventListener('click', modalWindowOpenHandler);
 
 function modalWindowOpenHandler(event) {
-
   event.preventDefault();
-  
+
   const movieID = event.target.dataset.id;
   // const movieID = event.target.dataset.action;
-  
+
   closeModalBtn.addEventListener('click', modalWindowCloseHandler);
   modal.addEventListener('click', backdropClickHandler);
   window.addEventListener('keydown', escKeyPressHandler);
-  
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
-    // if (event.target.tagName !== 'LI' && event.target.className !== 'card') {
+
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  // if (event.target.tagName !== 'LI' && event.target.className !== 'card') {
   //   return;
   // }
-    spinner();
-    modal.classList.remove('visually-hidden');
-    document.body.style.overflow = 'hidden';
-    renderMovieByID(movieID);
-
+  spinner();
+  modal.classList.remove('visually-hidden');
+  document.body.style.overflow = 'hidden';
+  renderMovieByID(movieID);
 }
-
 
 function modalWindowCloseHandler(event) {
   event.preventDefault();
@@ -63,7 +59,6 @@ function escKeyPressHandler(event) {
   }
 }
 
-
 export function renderMovieByID(movieID) {
   newApiService
     .fetchMovieById(movieID)
@@ -74,8 +69,6 @@ export function renderMovieByID(movieID) {
     });
 }
 
-
 function renderMovieModal(movie) {
   movieModalCard.innerHTML = movieModalTemplate(movie);
 }
-
