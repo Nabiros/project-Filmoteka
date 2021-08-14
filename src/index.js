@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import './js/header-nav-buttons';
+import './js/headerNavButtons';
 import './js/modal';
-import './js/pagination_render';
+import './js/paginationRender';
 import './js/spinner';

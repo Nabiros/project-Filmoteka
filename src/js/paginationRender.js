@@ -2,11 +2,11 @@ import refs from './refs';
 import movieCards from '../templates/film-cards.hbs';
 import NewApiService from './apiServise';
 import errorUrl from '../images/something_went_wrong.webp';
-import upButtonHandler from './buttonUp.js';
+import { scrollPage } from './buttonUp.js';
 import Pagination from 'tui-pagination';
 
 const { listElement, btnUp, paginationContainer } = refs;
-btnUp.addEventListener('click', upButtonHandler);
+btnUp.addEventListener('click', scrollPage);
 
 const newApiService = new NewApiService();
 
@@ -48,22 +48,3 @@ function renderMovie(movie) {
   listElement.innerHTML = markup;
   return markup;
 }
-
-function scrollPage() {
-  window.scrollTo({
-    top: document.documentElement.offsetTop,
-    behavior: 'smooth',
-  });
-}
-
-// // Рендер первой старницы
-// export function render() {
-//   newApiService.page = 1;
-//   newApiService
-//     .addGenresToMovieObj()
-//     .then(renderFilms)
-//     .catch(err => {
-//       console.log('error in function render');
-//       listElement.innerHTML = `<img  src="${errorUrl}" />`;
-//     });
-// }

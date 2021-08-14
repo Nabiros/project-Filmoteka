@@ -1,4 +1,4 @@
-function upButtonHandler() {
+function scrollPage() {
   window.scrollTo({
     top: document.documentElement.offsetTop,
     behavior: 'smooth',
@@ -16,4 +16,4 @@ window.addEventListener('scroll', function (e) {
   }
 });
 
-export default upButtonHandler;
+export { scrollPage };
