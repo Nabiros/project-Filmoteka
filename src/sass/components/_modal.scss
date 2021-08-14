@@ -58,7 +58,7 @@
   }
 }
 
-.js-card-modal {
+.card-modal {
   display: block;
 
   @media screen and (min-width: 768px) {
@@ -84,7 +84,7 @@
   display: block;
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: scale-down;
 }
 
 .card-records__title {
@@ -103,43 +103,41 @@
 }
 
 .card-records__info {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding-bottom: 20px;
-}
-
-.card-records__items {
-  display: block;
-  width: 40%;
-  padding-left: 0;
-  margin: 0;
+  table-layout: fixed;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .card-records__item {
+  width: 108px;
+  vertical-align: top;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   color: var(--modal-titles-color);
 
   &:not(:last-child) {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 151px;
   }
 }
 
-.card-records__subitems {
-  display: block;
-  padding-left: 0;
-  margin: 0;
-}
 .card-records__subitem {
+  vertical-align: top;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   color: var(--title-text);
 
   &:not(:last-child) {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
   }
 }
 

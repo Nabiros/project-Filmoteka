@@ -8,7 +8,7 @@ export default {
   headerStyle: document.querySelector('header'),
   libButtons: document.querySelector('.library-buttons'),
 
-  galleryFilms: document.querySelector('.js-card'),
+  // galleryFilms: document.querySelector('.js-card'),
   closeModalBtn: document.querySelector('.js-close-btn'),
   modal: document.querySelector('.js-backdrop'),
   movieModalCard: document.querySelector('.js-card-modal'),
