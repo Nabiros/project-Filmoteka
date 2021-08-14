@@ -12,7 +12,10 @@ const newApiService = new NewApiService();
 galleryFilms.addEventListener('click', modalWindowOpenHandler);
 
 function modalWindowOpenHandler(event) {
+  modal.classList.remove('visually-hidden');
+
   event.preventDefault();
+  
   const movieID = event.target.dataset.id;
 
   closeModalBtn.addEventListener('click', modalWindowCloseHandler);
@@ -21,8 +24,8 @@ function modalWindowOpenHandler(event) {
 
     if (event.target.nodeName !== 'IMG') {
         return;
-    }
-  modal.classList.remove('visually-hidden');
+  }
+  spinner();
   renderMovieByID(movieID);
 
 }
