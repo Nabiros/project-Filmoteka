@@ -12,7 +12,6 @@ const newApiService = new NewApiService();
 listElement.addEventListener('click', modalWindowOpenHandler);
 
 function modalWindowOpenHandler(event) {
-  modal.classList.remove('visually-hidden');
 
   event.preventDefault();
   
@@ -30,9 +29,9 @@ function modalWindowOpenHandler(event) {
   //   return;
   // }
     spinner();
-  modal.classList.remove('visually-hidden');
-  document.body.style.overflow = 'hidden';
-  renderMovieByID(movieID);
+    modal.classList.remove('visually-hidden');
+    document.body.style.overflow = 'hidden';
+    renderMovieByID(movieID);
 
 }
 
