@@ -1,10 +1,9 @@
 .footer {
-  margin-top: 20px;
   height: 100px;
   background-color: var(--backgr-footer);
+  margin-top: 20px;
 
   @media screen and(min-width: 768px) {
-    margin-top: 60px;
     height: 77px;
   }
 
@@ -50,4 +49,14 @@
     text-decoration: underline;
     text-decoration-color: var(--footer-text);
   }
+}
+
+.footer-thumb {
+  margin-top: auto;
+}
+
+.wrapper {
+  min-height: 100vh;
+  @include flex();
+  flex-direction: column;
 }

@@ -91,4 +91,8 @@
 .cards {
   display: flex;
   justify-content: flex-end;
+
+  &-list {
+    margin-bottom: 60px;
+  }
 }

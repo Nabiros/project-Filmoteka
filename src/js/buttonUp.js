@@ -1,4 +1,3 @@
-  
 function upButtonHandler() {
   window.scrollTo({
     top: document.documentElement.offsetTop,
