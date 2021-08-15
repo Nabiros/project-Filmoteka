@@ -13,7 +13,7 @@ export default class NewApiService {
     const response = await axios.get(
       `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${page}`,
     );
-    return response.data;
+     return response.data;
   }
 
   async fetchByInputValue() {
@@ -24,13 +24,13 @@ export default class NewApiService {
   }
 
   async fetchByGenres() {
-
     const response = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${KEY}`);
     return response.data.genres;
   }
 
-  async addGenresToMovieObj() {
+ 
 
+  async addGenresToMovieObj() {
     const data = await this.fetchPopularMovie();
     const genresList = await this.fetchByGenres();
     return data.map(movie => ({
@@ -51,4 +51,7 @@ export default class NewApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+
 }
+
+
