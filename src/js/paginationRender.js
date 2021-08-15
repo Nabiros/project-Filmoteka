@@ -66,10 +66,3 @@ function renderMovie(movie) {
   return markup;
 }
 
-function scrollPage() {
-  window.scrollTo({
-    top: document.documentElement.offsetTop,
-    behavior: 'smooth',
-  });
-}
-
