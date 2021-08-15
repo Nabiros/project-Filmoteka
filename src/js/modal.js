@@ -1,10 +1,8 @@
-import refs from './refs';
 import NewApiService from './apiServise.js';
 import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 import spinner from './spinner';
-
-const { listElement, closeModalBtn, modal, movieModalCard } = refs;
+import { listElement, closeModalBtn, modal, movieModalCard } from '../js/refs';
 
 const newApiService = new NewApiService();
 

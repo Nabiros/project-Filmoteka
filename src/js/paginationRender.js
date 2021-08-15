@@ -1,11 +1,10 @@
-import refs from './refs';
+import { listElement, btnUp, paginationContainer } from '../js/refs';
 import movieCards from '../templates/film-cards.hbs';
 import NewApiService from './apiServise';
 import errorUrl from '../images/something_went_wrong.webp';
 import { scrollPage } from './buttonUp.js';
 import Pagination from 'tui-pagination';
 
-const { listElement, btnUp, paginationContainer } = refs;
 btnUp.addEventListener('click', scrollPage);
 
 const newApiService = new NewApiService();

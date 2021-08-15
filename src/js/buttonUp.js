@@ -1,3 +1,5 @@
+import { btnUp } from '../js/refs';
+
 function scrollPage() {
   window.scrollTo({
     top: document.documentElement.offsetTop,
@@ -5,7 +7,7 @@ function scrollPage() {
   });
 }
 let scroll = 0;
-const btnUp = document.querySelector('.btnUp');
+
 window.addEventListener('scroll', function (e) {
   scroll = window.scrollY;
   if (scroll > 0) {

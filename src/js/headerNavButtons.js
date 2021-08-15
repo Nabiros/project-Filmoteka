@@ -1,6 +1,4 @@
-import refs from './refs';
-
-const {headerInput, homeBtn, myLibraryBtn, headerStyle, libButtons} = refs;
+import { headerInput, homeBtn, myLibraryBtn, headerStyle, libButtons } from '../js/refs';
 
 homeBtn.addEventListener('click', onHomeBtnClick);
 myLibraryBtn.addEventListener('click', onLibraryBtnClick);
