@@ -6,6 +6,7 @@ const KEY = `98821d28938ee5f201a6b9b7afe95fef`;
 export default class NewApiService {
   constructor() {
     this.searchQuery = '';
+    // this.page = 1;
   }
 
   async fetchPopularMovie(page) {
@@ -13,6 +14,7 @@ export default class NewApiService {
     const response = await axios.get(
       `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${page}`,
     );
+    console.log(response.data);
     return response.data;
   }
 
@@ -24,13 +26,11 @@ export default class NewApiService {
   }
 
   async fetchByGenres() {
-
     const response = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${KEY}`);
     return response.data.genres;
   }
 
   async addGenresToMovieObj() {
-
     const data = await this.fetchPopularMovie();
     const genresList = await this.fetchByGenres();
     return data.map(movie => ({
@@ -51,4 +51,10 @@ export default class NewApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+  // get pageNumber() {
+  //   return this.searchQuery;
+  // }
+  // set pageNumber(newPage) {
+  //   this.page = newPage;
+  // }
 }
