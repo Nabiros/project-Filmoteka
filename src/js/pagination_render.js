@@ -10,6 +10,15 @@ btnUp.addEventListener('click', upButtonHandler);
 
 const newApiService = new NewApiService();
 
+newApiService.fetchByGenres().then(r => {
+  localStorage.setItem('listOfGenres', JSON.stringify(r));
+});
+
+function genresList() {
+  const listOfGenres = localStorage.getItem('listOfGenres');
+  return JSON.parse(listOfGenres);
+}
+
 const pagination = new Pagination(paginationContainer, {
   totalItems: 0,
   itemsPerPage: 20,
@@ -20,14 +29,23 @@ const pagination = new Pagination(paginationContainer, {
 
 newApiService
   .fetchPopularMovie(pagination.getCurrentPage())
-  .then(data => {
+  .then(data => { 
     pagination.reset(data.total_pages);
-    renderMovie(data.results);
+    renderMovie(dateAndGenreNormalization(data));
   })
   .catch(err => {
     console.log('error in function render');
     listElement.innerHTML = `<img  src="${errorUrl}" />`;
   });
+
+
+function dateAndGenreNormalization(data) {
+    return data.results.map(movie => ({
+        ...movie,
+        release_date: movie.release_date.split('-')[0],
+        genres: movie.genre_ids.map(id => genresList().filter(el => el.id === id)).flat(),
+      }))
+ }
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
@@ -35,7 +53,7 @@ pagination.on('afterMove', event => {
   newApiService
     .fetchPopularMovie(currentPage)
     .then(data => {
-      renderMovie(data.results);
+      renderMovie(dateAndGenreNormalization(data));
     })
     .catch(err => {
       console.log('error in function render');
@@ -56,14 +74,3 @@ function scrollPage() {
   });
 }
 
-// // Рендер первой старницы
-// export function render() {
-//   newApiService.page = 1;
-//   newApiService
-//     .addGenresToMovieObj()
-//     .then(renderFilms)
-//     .catch(err => {
-//       console.log('error in function render');
-//       listElement.innerHTML = `<img  src="${errorUrl}" />`;
-//     });
-// }
