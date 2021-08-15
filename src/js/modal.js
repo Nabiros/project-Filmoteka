@@ -10,24 +10,26 @@ listElement.addEventListener('click', modalWindowOpenHandler);
 
 function modalWindowOpenHandler(event) {
   event.preventDefault();
-
   const movieID = event.target.dataset.id;
-  // const movieID = event.target.dataset.action;
 
   closeModalBtn.addEventListener('click', modalWindowCloseHandler);
   modal.addEventListener('click', backdropClickHandler);
   window.addEventListener('keydown', escKeyPressHandler);
 
-  if (event.target.nodeName !== 'IMG') {
+  if (event.target.nodeName === 'UL') {
+    document.body.style.overflow = '';
     return;
   }
-  // if (event.target.tagName !== 'LI' && event.target.className !== 'card') {
-  //   return;
-  // }
+
   spinner();
-  modal.classList.remove('visually-hidden');
-  document.body.style.overflow = 'hidden';
   renderMovieByID(movieID);
+    
+  setTimeout(() => {
+    modal.classList.remove('visually-hidden');
+    document.body.style.overflow = 'hidden';
+  }, 700);
+ 
+  
 }
 
 function modalWindowCloseHandler(event) {
@@ -68,5 +70,6 @@ export function renderMovieByID(movieID) {
 }
 
 function renderMovieModal(movie) {
+  movie.popularity = (movie.popularity).toFixed(1);
   movieModalCard.innerHTML = movieModalTemplate(movie);
 }
