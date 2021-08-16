@@ -8,7 +8,7 @@ const newApiService = new NewApiService();
 
 listElement.addEventListener('click', modalWindowOpenHandler);
 
-function modalWindowOpenHandler(event) {
+async function modalWindowOpenHandler(event) {
   event.preventDefault();
   const movieID = event.target.dataset.id;
 
@@ -22,14 +22,9 @@ function modalWindowOpenHandler(event) {
   }
 
   spinner();
-  renderMovieByID(movieID);
-    
-  setTimeout(() => {
-    modal.classList.remove('visually-hidden');
-    document.body.style.overflow = 'hidden';
-  }, 700);
- 
-  
+  await renderMovieByID(movieID);
+  modal.classList.remove('visually-hidden');
+  document.body.style.overflow = 'hidden';  
 }
 
 function modalWindowCloseHandler(event) {
@@ -59,11 +54,14 @@ function escKeyPressHandler(event) {
   }
 }
 
-export function renderMovieByID(movieID) {
-  newApiService
-    .fetchMovieById(movieID)
-    .then(renderMovieModal)
-    .catch(err => {
+
+async function renderMovieByID(movieID) {
+  try {
+    const movie = await newApiService.fetchMovieById(movieID);
+    movie.popularity = (movie.popularity).toFixed(1);
+    movieModalCard.innerHTML = movieModalTemplate(movie);
+  }
+    catch(error) {
       console.log('error in function render');
       movieModalCard.innerHTML = `<img  src="${errorUrl}" />`;
     });
