@@ -8,7 +8,6 @@ const myLibraryBtn = document.querySelector('.header-library__btn');
 const headerStyle = document.querySelector('header');
 const libButtons = document.querySelector('.library-buttons');
 
-const galleryFilms = document.querySelector('.js-card');
 const closeModalBtn = document.querySelector('.js-close-btn');
 const modal = document.querySelector('.js-backdrop');
 const movieModalCard = document.querySelector('.js-card-modal');
@@ -26,7 +25,6 @@ export {
   myLibraryBtn,
   headerStyle,
   libButtons,
-  galleryFilms,
   closeModalBtn,
   modal,
   movieModalCard,
