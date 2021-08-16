@@ -141,6 +141,16 @@
   }
 }
 
+.genres-input:hover {
+  color: var(--accent-color);
+  cursor: pointer;
+  @include transition(color);
+}
+
+.genres-input:focus {
+  outline: none;
+}
+
 .card-records__vote {
   display: inline-block;
   text-align: center;
