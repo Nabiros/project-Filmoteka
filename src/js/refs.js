@@ -14,6 +14,9 @@ const movieModalCard = document.querySelector('.js-card-modal');
 
 const paginationContainer = document.getElementById('tui-pagination-container');
 
+const bodyEl = document.querySelector('body');
+const switchInputEl = document.querySelector('.theme-switch__toggle');
+
 export {
   listElement,
   btnUp,
@@ -27,4 +30,6 @@ export {
   modal,
   movieModalCard,
   paginationContainer,
+  bodyEl,
+  switchInputEl,
 };
