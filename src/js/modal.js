@@ -58,6 +58,11 @@ function escKeyPressHandler(event) {
 async function renderMovieByID(movieID) {
   try {
     const movie = await newApiService.fetchMovieById(movieID);
+    
+    if(movie.genres.length > 2) {
+    movie.genres = [...movie.genres.slice(0, 2), { name: 'Others' }]
+    }
+    
     movie.popularity = (movie.popularity).toFixed(1);
     movieModalCard.innerHTML = movieModalTemplate(movie);
   }
