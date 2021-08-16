@@ -60,8 +60,17 @@ pagination.on('afterMove', event => {
     });
 });
 
-function renderMovie(movie) {
-  const markup = movieCards(movie);
+function renderMovie(movies) {
+  // replace genders data for each card
+  // if genders length more than 2, we set Other gender name
+  
+  movies.forEach(movie => {
+    if(movie.genres.length > 2) {
+      movie.genres = [...movie.genres.slice(0, 2), { name: 'Others' }]
+    }
+  })
+
+  const markup = movieCards(movies);
   listElement.innerHTML = markup;
   return markup;
 }

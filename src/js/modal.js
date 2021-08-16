@@ -70,6 +70,9 @@ export function renderMovieByID(movieID) {
 }
 
 function renderMovieModal(movie) {
+  if(movie.genres.length > 2) {
+    movie.genres = [...movie.genres.slice(0, 2), { name: 'Others' }]
+  }
   movie.popularity = (movie.popularity).toFixed(1);
   movieModalCard.innerHTML = movieModalTemplate(movie);
 }
