@@ -13,12 +13,12 @@ export default class NewApiService {
     const response = await axios.get(
       `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${page}`,
     );
-     return response.data;
+    return response.data;
   }
 
-  async fetchByInputValue() {
+  async fetchByInputValue(page) {
     const response = await axios.get(
-      `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`,
+      `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${page}&query=${this.searchQuery}`,
     );
     return response.data;
   }
@@ -28,17 +28,15 @@ export default class NewApiService {
     return response.data.genres;
   }
 
- 
-
-  async addGenresToMovieObj() {
-    const data = await this.fetchPopularMovie();
-    const genresList = await this.fetchByGenres();
-    return data.map(movie => ({
-      ...movie,
-      release_date: movie.release_date.split('-')[0],
-      genres: movie.genre_ids.map(id => genresList.filter(el => el.id === id)).flat(),
-    }));
-  }
+  // async addGenresToMovieObj() {
+  //   const data = await this.fetchPopularMovie();
+  //   const genresList = await this.fetchByGenres();
+  //   return data.map(movie => ({
+  //     ...movie,
+  //     release_date: movie.release_date.split('-')[0],
+  //     genres: movie.genre_ids.map(id => genresList.filter(el => el.id === id)).flat(),
+  //   }));
+  // }
 
   async fetchMovieById(movie_id) {
     const response = await axios.get(`${BASE_URL}/movie/${movie_id}?api_key=${KEY}&language=en-US`);
@@ -51,7 +49,4 @@ export default class NewApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
-
 }
-
-

@@ -28,7 +28,7 @@ const pagination = new Pagination(paginationContainer, {
 
 newApiService
   .fetchPopularMovie(pagination.getCurrentPage())
-  .then(data => { 
+  .then(data => {
     pagination.reset(data.total_pages);
     renderMovie(dateAndGenreNormalization(data));
   })
@@ -37,14 +37,13 @@ newApiService
     listElement.innerHTML = `<img  src="${errorUrl}" />`;
   });
 
-
 function dateAndGenreNormalization(data) {
-    return data.results.map(movie => ({
-        ...movie,
-        release_date: movie.release_date.split('-')[0],
-        genres: movie.genre_ids.map(id => genresList().filter(el => el.id === id)).flat(),
-      }))
- }
+  return data.results.map(movie => ({
+    ...movie,
+    release_date: movie.release_date.split('-')[0],
+    genres: movie.genre_ids.map(id => genresList().filter(el => el.id === id)).flat(),
+  }));
+}
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
@@ -60,9 +59,17 @@ pagination.on('afterMove', event => {
     });
 });
 
-function renderMovie(movie) {
-  const markup = movieCards(movie);
+function renderMovie(movies) {
+  // replace genders data for each card
+  // if genders length more than 2, we set Other gender name
+
+  movies.forEach(movie => {
+    if (movie.genres.length > 2) {
+      movie.genres = [...movie.genres.slice(0, 2), { name: 'Others' }];
+    }
+  });
+
+  const markup = movieCards(movies);
   listElement.innerHTML = markup;
   return markup;
 }
-
