@@ -16,6 +16,7 @@ const paginationContainer = document.getElementById('tui-pagination-container');
 
 const bodyEl = document.querySelector('body');
 const switchInputEl = document.querySelector('.theme-switch__toggle');
+const modalEl = document.querySelector('.modal-window')
 
 export {
   listElement,
@@ -32,4 +33,5 @@ export {
   paginationContainer,
   bodyEl,
   switchInputEl,
+  modalEl,
 };

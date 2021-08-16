@@ -1,10 +1,10 @@
 body.dark-theme {
   background-color: #3d3939;
-  color: #ffffff;
+  color: var(--header-text);
 }
 
 body.light-theme {
-  background-color: #ffffff;
+  background-color: var(--header-text);
   color: #000000;
 }
 
@@ -67,7 +67,7 @@ body.light-theme {
 
 .theme-switch__marker {
   position: relative;
-  background-color: #fff;
+  background-color: var(--header-text);
   width: 20px; //
   height: 20px; //
   border-radius: 50%;

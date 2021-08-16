@@ -27,12 +27,23 @@
   padding: 48px 20px 41px;
   background-color: var(--header-text);
 
+  .modal-window.dark-theme {
+    background-color: #3d3939;
+    color: #ffffff;
+  }
+
+  .modal-window.light-theme {
+    background-color: var(--header-text) f;
+    color: #000000;
+  }
+
   @media screen and (min-width: 768px) {
     display: flex;
     padding-left: 30px;
     padding-right: 30px;
   }
 }
+
 .close {
   width: 18px;
   height: 18px;
