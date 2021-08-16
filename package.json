@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "basiclightbox": "^5.0.4",
     "js-loading-overlay": "^1.2.0",
     "tui-pagination": "^3.4.1"
   }
