@@ -141,13 +141,13 @@
   }
 }
 
-.genres-input:hover {
+.genre-title:hover {
   color: var(--accent-color);
   cursor: pointer;
   @include transition(color);
 }
 
-.genres-input:focus {
+.genres-title:focus {
   outline: none;
 }
 
