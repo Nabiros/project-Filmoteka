@@ -1,16 +1,13 @@
 .btnUp {
   position: fixed;
-  bottom: 125px;
-  right: 185px;
+
   z-index: 1;
   background-image: url('https://image.flaticon.com/icons/png/512/753/753227.png');
-  background-size: 80px ;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  width: 70px;
-  height: 70px;
+
   opacity: 0.7;
   cursor: pointer;
   padding: 0;
@@ -19,11 +16,34 @@
     opacity: 1;
     border: none;
   }
-   &:focus {
+  &:focus {
     outline: none;
   }
-    @media screen and (max-width: 767px) {
-  bottom: 5px;
-  right: 5px;
+  @media screen and (max-width: 767px) {
+    background-size: 45px;
+
+    width: 45px;
+    height: 45px;
+
+    bottom: 20px;
+    right: 58px;
+  }
+  @media screen and(min-width:768px) and (max-width: 1023px) {
+    background-size: 60px;
+
+    width: 60px;
+    height: 60px;
+
+    bottom: 20px;
+    right: 7px;
+  }
+  @media screen and(min-width:1024px) {
+    background-size: 70px;
+
+    width: 70px;
+    height: 70px;
+
+    bottom: 110px;
+    right: 25px;
   }
 }
