@@ -9,13 +9,15 @@ import {
   dateAndGenreNormalization,
 } from './paginationRender';
 import { scrollPage } from './buttonUp.js';
+import { debounce } from 'lodash';
 
+const DEBOUNCE_DELAY = 300;
 const newApiService = new NewApiService();
 const pagination = new Pagination(paginationContainer, options);
 
-headerInputField.addEventListener('input', renderWithInputValue);
+headerInputField.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
-function renderWithInputValue(e) {
+function onSearch(e) {
   const inputValue = e.target.value.trim();
 
   if (inputValue.length === 0) {
