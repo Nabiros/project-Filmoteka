@@ -33,6 +33,15 @@ export default class NewApiService {
     return response.data;
   }
 
+    incrementPage() {
+      this.page += 1;
+    }
+
+    resetPage() {
+      this.page = 1;
+  }
+
+
   get query() {
     return this.searchQuery;
   }
