@@ -207,14 +207,16 @@
   border-radius: 5px;
   text-transform: uppercase;
   cursor: pointer;
+  @include transition(color);
+  @include transition(background-color);
 
   &:hover {
     border: none;
     color: var(--header-text);
     background: var(--rating-color);
+    @include transition(border);
     @include transition(color);
     @include transition(background-color);
-    @include transition(border);
   }
 
   @media screen and (min-width: 768px) {
