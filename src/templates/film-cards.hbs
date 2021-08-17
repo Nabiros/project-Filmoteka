@@ -1,11 +1,11 @@
 {{#each this}}
   <li
-    class='card'
-    data-action='{{id}}'
- data-aos="fade-up"
+     class='card'
+     data-id='{{id}}'
+     data-aos="fade-up"
      data-aos-duration="1000"
   >
-    <a class='card__item' href='#'>
+    <a class='card__item' href='#' data-id='{{id}}'>
       {{! <img class="card__img" src="#" alt="#" loading="lazy" /> }}
       <img
         class='card__img'
@@ -16,13 +16,11 @@
         onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';"
         loading='lazy'
       />
-      <span class='card__vote_average'>{{vote_average}}</span>
+      <span class='card__vote_average' data-id='{{id}}'>{{vote_average}}</span>
     </a>
-    <h2 class='card__name'>{{title}} {{name}}</h2>
-    <div class='card__info'>
-      <span class='card__genre'>{{#each genres}} {{name}} {{/each}}</span>
-      |
-      <span class='card__year'>{{release_date}}</span>
+    <h2 class='card__name' data-id='{{id}}'>{{title}} {{name}}</h2>
+    <div class='card__info' data-id='{{id}}'>
+      <span class='card__genre' data-id='{{id}}'>{{#each genres}} {{name}} {{/each}}</span> | <span class='card__year' data-id='{{id}}'>{{release_date}}</span>
     </div>
   </li>
 {{/each}}
