@@ -2,8 +2,8 @@ import NewApiService from './apiServise.js';
 import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 import spinner from './spinner';
-import { listElement, closeModalBtn, modal, movieModalCard } from '../js/refs';
-import { onModalLibraryBtnClick, isMovieInLibrary } from './library';
+import { listElement, closeModalBtn, modal, movieModalCard, watchedBtn, queueBtn } from '../js/refs';
+import { onWatchedLibraryBtnClick, onQueueLibraryBtnClick, watchedLibrary, queueLibrary } from './newLocalStorage';
 
 const newApiService = new NewApiService();
 
@@ -13,9 +13,20 @@ async function modalWindowOpenHandler(event) {
   event.preventDefault();
   const movieID = event.target.dataset.id;
 
+  if (watchedLibrary.includes(movieID)) {
+    // console.log('it works');
+    watchedBtn.innerHTML = 'remove from watched';
+  }
+
+  if(queueLibrary.includes(movieID)) {
+    queueBtn.textContent = 'remove from watched';
+  }
+  
   closeModalBtn.addEventListener('click', modalWindowCloseHandler);
   modal.addEventListener('click', backdropClickHandler);
   window.addEventListener('keydown', escKeyPressHandler);
+  modal.addEventListener('click', onWatchedLibraryBtnClick);
+  modal.addEventListener('click', onQueueLibraryBtnClick);
 
   if (event.target.nodeName === 'UL') {
     document.body.style.overflow = '';
@@ -26,8 +37,6 @@ async function modalWindowOpenHandler(event) {
   await renderMovieByID(movieID);
   modal.classList.remove('visually-hidden');
   document.body.style.overflow = 'hidden';
-  
-  modal.addEventListener('click', onModalLibraryBtnClick);
 }
 
 function modalWindowCloseHandler(event) {
@@ -35,12 +44,12 @@ function modalWindowCloseHandler(event) {
   closeModalBtn.removeEventListener('click', modalWindowCloseHandler);
   modal.removeEventListener('click', backdropClickHandler);
   window.removeEventListener('keydown', escKeyPressHandler);
+  modal.removeEventListener('click', onWatchedLibraryBtnClick);
+  modal.removeEventListener('click', onQueueLibraryBtnClick);
 
   modal.classList.add('visually-hidden');
   movieModalCard.innerHTML = '';
   document.body.style.overflow = '';
-
-  modal.removeEventListener('click', onModalLibraryBtnClick);
 }
 
 function backdropClickHandler(event) {
