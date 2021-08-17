@@ -1,7 +1,3 @@
-.basicLightbox {
-  overflow: scroll;
-}
-
 .team-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -14,11 +10,11 @@
 
   width: 240px;
 
-  background-color: #fff;
+  background-color: var(--header-text);
   border-radius: 15px;
 
   @media screen and (min-width: 768px) {
-    width: 600px;
+    width: 750px;
 
     border-radius: 25px;
   }
@@ -26,7 +22,7 @@
   @media screen and (min-width: 1024px) {
     margin: -30px;
 
-    width: 800px;
+    width: 950px;
   }
 }
 
@@ -48,7 +44,7 @@
   @media screen and (min-width: 1024px) {
     margin: 30px;
 
-    width: calc((100% - 240px) / 4);
+    width: calc((100% - 300px) / 5);
   }
 }
 
@@ -57,39 +53,53 @@
 
   width: 100%;
 
-  border-radius: 50%;
-  box-shadow: 5px 5px 11px -2px #000;
+  border-radius: 5px;
+  box-shadow: 5px 5px 11px -2px var(--title-text);
+  transform: scale(1);
+  @include transition(transform);
 }
+
+.team-image:focus, .team-image:hover {
+  transform: scale(1.1);
+}
+
 
 .team-name {
   margin-bottom: 5px;
 
-//   font-family: $mainFont;
+  font-family: var(--font-family);
   font-weight: 700;
 }
 
 .team-role {
-//   font-family: $mainFont;
+  font-family: var(--font-family);
 
   @media screen and (max-width: (768px - 1)) {
     font-size: 14px;
   }
 
-  color: gold;
+  color: var(--accent-color);
 }
 
 .team-git {
   position: absolute;
 
   top: 65px;
-  right: -10px;
+  
+
+   @media screen and (max-width: (768px - 1)) {
+    top: 0px;
+    right: 0px;
+  }
 
   @media screen and (min-width: 768px) {
-    top: 100px;
+    top: 185px;
+    right: 125px;
   }
 
   @media screen and (min-width: 1024px) {
-    top: 120px;
+    top: 165px;
+    right: 105px;
   }
 
   transform: scale(1);
@@ -101,10 +111,6 @@
   }
 }
 
-// footer
-
-.team-modal {
-  text-decoration: underline;
-
+.footer-text-dec {
   cursor: pointer;
 }
