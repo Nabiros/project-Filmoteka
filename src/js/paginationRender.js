@@ -48,6 +48,7 @@ function dateAndGenreNormalization(data) {
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
+  listElement.innerHTML = '';
   scrollPage();
   newApiService
     .fetchPopularMovie(currentPage)
