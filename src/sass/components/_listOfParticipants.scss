@@ -8,13 +8,13 @@
     margin-top: 70px;
   }
 
-  width: 240px;
+  width: 370px;
 
   background-color: var(--header-text);
   border-radius: 15px;
 
   @media screen and (min-width: 768px) {
-    width: 750px;
+    width: 780px;
 
     border-radius: 25px;
   }
@@ -22,7 +22,7 @@
   @media screen and (min-width: 1024px) {
     margin: -30px;
 
-    width: 950px;
+    width: 1050px;
   }
 }
 
@@ -50,8 +50,9 @@
 
 .team-image {
   margin-bottom: 10px;
-
-  width: 100%;
+  width: 700px;
+  height: 155px;
+  // width: 100%;
 
   border-radius: 5px;
   box-shadow: 5px 5px 11px -2px var(--title-text);
@@ -59,10 +60,10 @@
   @include transition(transform);
 }
 
-.team-image:focus, .team-image:hover {
+.team-image:focus,
+.team-image:hover {
   transform: scale(1.1);
 }
-
 
 .team-name {
   margin-bottom: 5px;
@@ -85,21 +86,20 @@
   position: absolute;
 
   top: 65px;
-  
 
-   @media screen and (max-width: (768px - 1)) {
-    top: 0px;
-    right: 0px;
+  @media screen and (max-width: (768px - 1)) {
+    top: 175px;
+    right: 115px;
   }
 
   @media screen and (min-width: 768px) {
-    top: 185px;
-    right: 125px;
+    top: 175px;
+    right: 130px;
   }
 
   @media screen and (min-width: 1024px) {
-    top: 165px;
-    right: 105px;
+    top: 170px;
+    right: 125px;
   }
 
   transform: scale(1);
@@ -113,4 +113,7 @@
 
 .footer-text-dec {
   cursor: pointer;
+
 }
+
+

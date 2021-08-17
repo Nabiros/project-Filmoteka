@@ -1,5 +1,10 @@
 {{#each this}}
-  <li class='card' data-action='{{id}}'>
+  <li
+    class='card'
+    data-action='{{id}}'
+ data-aos="fade-up"
+     data-aos-duration="1000"
+  >
     <a class='card__item' href='#'>
       {{! <img class="card__img" src="#" alt="#" loading="lazy" /> }}
       <img
@@ -15,7 +20,9 @@
     </a>
     <h2 class='card__name'>{{title}} {{name}}</h2>
     <div class='card__info'>
-      <span class='card__genre'>{{#each genres}} {{name}} {{/each}}</span> | <span class='card__year'>{{release_date}}</span>
+      <span class='card__genre'>{{#each genres}} {{name}} {{/each}}</span>
+      |
+      <span class='card__year'>{{release_date}}</span>
     </div>
   </li>
 {{/each}}
