@@ -3,6 +3,7 @@ import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 import spinner from './spinner';
 import { listElement, closeModalBtn, modal, movieModalCard } from '../js/refs';
+import { onModalLibraryBtnClick, isMovieInLibrary } from './library';
 
 const newApiService = new NewApiService();
 
@@ -24,7 +25,9 @@ async function modalWindowOpenHandler(event) {
   spinner();
   await renderMovieByID(movieID);
   modal.classList.remove('visually-hidden');
-  document.body.style.overflow = 'hidden';  
+  document.body.style.overflow = 'hidden';
+  
+  modal.addEventListener('click', onModalLibraryBtnClick);
 }
 
 function modalWindowCloseHandler(event) {
@@ -36,6 +39,8 @@ function modalWindowCloseHandler(event) {
   modal.classList.add('visually-hidden');
   movieModalCard.innerHTML = '';
   document.body.style.overflow = '';
+
+  modal.removeEventListener('click', onModalLibraryBtnClick);
 }
 
 function backdropClickHandler(event) {
