@@ -14,8 +14,6 @@ const movieModalCard = document.querySelector('.js-card-modal');
 
 const paginationContainer = document.getElementById('tui-pagination-container');
 
-const searchInput = document.querySelector('.header-input__field');
-
 export {
   listElement,
   btnUp,
@@ -29,5 +27,4 @@ export {
   modal,
   movieModalCard,
   paginationContainer,
-  searchInput,
 };

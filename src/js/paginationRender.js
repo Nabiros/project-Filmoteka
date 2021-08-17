@@ -18,33 +18,37 @@ function genresList() {
   return JSON.parse(listOfGenres);
 }
 
-const pagination = new Pagination(paginationContainer, {
+export const options = {
   totalItems: 0,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
   centerAlign: true,
-});
+};
 
-newApiService
-  .fetchPopularMovie(pagination.getCurrentPage())
-  .then(data => { 
-    pagination.reset(data.total_pages);
-    renderMovie(dateAndGenreNormalization(data));
-  })
-  .catch(err => {
-    console.log('error in function render');
-    listElement.innerHTML = `<img  src="${errorUrl}" />`;
-  });
+const pagination = new Pagination(paginationContainer, options);
 
+popularMovieRender();
+export function popularMovieRender() {
+  newApiService
+    .fetchPopularMovie(pagination.getCurrentPage())
+    .then(data => {
+      pagination.reset(data.total_pages);
+      renderMovie(dateAndGenreNormalization(data));
+    })
+    .catch(err => {
+      console.log('error in function render');
+      listElement.innerHTML = `<img  src="${errorUrl}" />`;
+    });
+}
 
-function dateAndGenreNormalization(data) {
-    return data.results.map(movie => ({
-        ...movie,
-        release_date: movie.release_date.split('-')[0],
-        genres: movie.genre_ids.map(id => genresList().filter(el => el.id === id)).flat(),
-      }))
- }
+export function dateAndGenreNormalization(data) {
+  return data.results.map(movie => ({
+    ...movie,
+    release_date: movie.release_date.split('-')[0],
+    genres: movie.genre_ids.map(id => genresList().filter(el => el.id === id)).flat(),
+  }));
+}
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
@@ -61,18 +65,14 @@ pagination.on('afterMove', event => {
     });
 });
 
-function renderMovie(movies) {
-  // replace genders data for each card
-  // if genders length more than 2, we set Other gender name
-  
+export function renderMovie(movies) {
   movies.forEach(movie => {
-    if(movie.genres.length > 2) {
-      movie.genres = [...movie.genres.slice(0, 2), { name: 'Others' }]
+    if (movie.genres.length > 2) {
+      movie.genres = [...movie.genres.slice(0, 2), { name: 'Others' }];
     }
-  })
+  });
 
   const markup = movieCards(movies);
   listElement.innerHTML = markup;
   return markup;
 }
-
