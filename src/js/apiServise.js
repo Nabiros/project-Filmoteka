@@ -28,16 +28,6 @@ export default class NewApiService {
     return response.data.genres;
   }
 
-  // async addGenresToMovieObj() {
-  //   const data = await this.fetchPopularMovie();
-  //   const genresList = await this.fetchByGenres();
-  //   return data.map(movie => ({
-  //     ...movie,
-  //     release_date: movie.release_date.split('-')[0],
-  //     genres: movie.genre_ids.map(id => genresList.filter(el => el.id === id)).flat(),
-  //   }));
-  // }
-
   async fetchMovieById(movie_id) {
     const response = await axios.get(`${BASE_URL}/movie/${movie_id}?api_key=${KEY}&language=en-US`);
     return response.data;
