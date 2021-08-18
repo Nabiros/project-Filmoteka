@@ -1,6 +1,5 @@
 import { headerInput, homeBtn, myLibraryBtn, headerStyle, libButtons, watchedBtn, queueBtn, listElement } from '../js/refs';
 import { extractWatched, extractQueue } from './newLocalStorage';
-import movieCards from '../templates/film-cards.hbs';
 
 homeBtn.addEventListener('click', onHomeBtnClick);
 myLibraryBtn.addEventListener('click', onLibraryBtnClick);
