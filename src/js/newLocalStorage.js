@@ -4,8 +4,8 @@ import NewApiService from './apiServise';
 
 const newApiService = new NewApiService();
 
-export const watchedLibrary = JSON.parse(localStorage.getItem('watchedLibrary')) || [];
-export const queueLibrary = JSON.parse(localStorage.getItem('queueLibrary')) || [];
+export const watchedLibrary = JSON.parse(localStorage.getItem('watchedLibrary'));
+export const queueLibrary = JSON.parse(localStorage.getItem('queueLibrary'));
 
 export const onWatchedLibraryBtnClick = (e) => {
     if (e.target.className === 'watched-library-button') {
@@ -101,9 +101,15 @@ export const extractQueue = () => {
         // console.log(getStoredMovie);
 
         getStoredMovie.then(data => {
-            const markup = movieCards(data);
+            const array = []
+            array.push(data);
+
+            const puf = movieCards(array);
+            listElement.innerHTML = puf;
+
+
             // console.log(markup);
-            appendMarkup(listElement, markup);
+            // appendMarkup(listElement, array);
         })
         .catch(error => {
             console.log(error);
