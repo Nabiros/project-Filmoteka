@@ -1,4 +1,4 @@
-import { bodyEl, switchInputEl, modalEl, changeColorTitle } from './refs';
+import { bodyEl, switchInputEl, modalEl} from './refs';
 
 const Theme = {
   LIGHT: 'light-theme',
