@@ -1,14 +1,91 @@
-import movieCards from '../templates/film-cards.hbs';
-import NewApiService from './apiServise.js';
+import { paginationContainer, listElement } from '../js/refs';
 import errorUrl from '../images/something_went_wrong.webp';
-import spinner from './spinner';
+import NewApiService from './apiServise';
+import Pagination from 'tui-pagination';
+import {
+  options,
+  popularMovieRender,
+  renderMovie,
+  dateAndGenreNormalization,
+} from './paginationRender';
+import { scrollPage } from './buttonUp.js';
+import { debounce } from 'lodash';
 
-const cardCollection = document.querySelector('.card__collection');
-const genresInput = document.querySelector('.genres-input');
-
-genresInput.addEventListener('submit', onSearchMoviesByGenre)
-
+const DEBOUNCE_DELAY = 300;
 const newApiService = new NewApiService();
+const pagination = new Pagination(paginationContainer, options);
+
+// const listElement = document.querySelector('.js-card');
+
+const genresInput = document.querySelector('.genres-input');
+const genresList = document.querySelector('.genres-list');
+
+genresInput.addEventListener('click', onGenresListSearch);
+
+function onGenresListSearch(e) {
+    e.preventDefault();
+    genresList.innerHTML = '';
+     renderGenresList(genres);
+}
+
+function renderGenresList(genre) {
+    newApiService.fetchByGenres();
+        
+    const genresListMarkup = createGenresListMarkup(genre);
+    genresList.innerHTML = ('beforeend', genresListMarkup);
+    console.log(genresList.innerHTML);
+}
+
+function createGenresListMarkup(genres) {
+    return genres.map(genre => `<li class = "genre-title">${genre}</li>`).join('');
+}
+
+
+// Рендерим фильмы по жанрам
+
+// const genresInput = document.querySelector('.genres-input');
+// const genresList = document.querySelector('.genres-list');
+const clickedGenreTitle = document.querySelector('.genre-title');
+const genresInputField = document.querySelector('.genres-input__field');
+
+genresInputField.addEventListener('submit', onSearchMoviesByGenre)
+clickedGenreTitle.addEventListener('click', onSearchByGenre);
+
+function onSearchByGenre(e) {
+    clickedGenreTitle = e.target.value;
+    console.log(e.target.value);
+  genresInputField.value = clickedGenreTitle.textContent;
+
+  if (genresInputValue.length === 0) {
+    popularMovieRender();
+  } else {
+    newApiService.searchQuery = genresInputValue;
+    genreRenderOfMovie();
+  }
+}
+
+function genreRenderOfMovie() {
+  newApiService
+    .fetchByGenreBtn(pagination.getCurrentPage())
+    .then(data => {
+      pagination.reset(data.total_pages);
+      renderMovie(dateAndGenreNormalization(data));
+    })
+    .catch(err => {
+      console.log('error in function render');
+      listElement.innerHTML = `<img  src="${errorUrl}" />`;
+    });
+}
+
+
+function appendMoviesMarkup(movies) {
+    listElement.insertAdjacentHTML('beforeend', movieCards(movies));
+}
+
+function clearCardCollection() {
+    listElement.innerHTML = '';
+    
+}
 
 function onSearchMoviesByGenre(e) {
     e.preventDefault();
@@ -31,53 +108,5 @@ function fetchByGenres() {
   });
 }
 
-function appendMoviesMarkup(movies) {
-    cardCollection.insertAdjacentHTML('beforeend', movieCards(movies));
-}
-
-function clearCardCollection() {
-    cardCollection.innerHTML = '';
-    
-}
-
-
-  
-
-// async fetchByGenres() {
-//     const response = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${KEY}`);
-//     return response.data.genres;
-//   }
-
-
-
-// // Рендерим список жанров
-// genresInput.addEventListener('click', onGenresListOpen);
-
-// function onGenresListSearch(event) {
-//     event.preventDefault();
-//     list.innerHTML = '';
-//     const searchGenres = event.target;
-//     // renderGenresList(genres);
-// }
-
-
-// function renderGenresList(genre) {
-//     const genresListMarkup = createGenresListMarkup(genre);
-//     list.innerHTML = ('beforeend', genresListMarkup);
-// }
-
-// function createGenresListMarkup(genres) {
-//     return genres.map(genre => `<li class = "genre-title">${genre}</li>`).join('');
-// }
-
-// newApiService.fetchByGenres();
-// const genreTitle = document.querySelector('.genre-title');
-// genreTitle.addEventListener('click', );
-// async fetchByGenres() {
-//     const response = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${KEY}`);
-//     return response.data.genres;
-// }
-
-// Рендерим список фильмов по жанру
 
 

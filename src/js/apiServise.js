@@ -28,21 +28,16 @@ export default class NewApiService {
     return response.data.genres;
   }
 
+  async fetchByGenreBtn(genre) {
+    const response = await axios.get(`${BASE_URL}/${genre}/movie/list?api_key=${KEY}`);
+    return response.data.results;
+  }
   async fetchMovieById(movie_id) {
     const response = await axios.get(`${BASE_URL}/movie/${movie_id}?api_key=${KEY}&language=en-US`);
     return response.data;
   }
 
-    incrementPage() {
-      this.page += 1;
-    }
-
-    resetPage() {
-      this.page = 1;
-  }
-
-
-  get query() {
+     get query() {
     return this.searchQuery;
   }
   set query(newQuery) {
