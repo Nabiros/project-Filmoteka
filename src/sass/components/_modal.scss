@@ -35,6 +35,7 @@
     padding-right: 30px;
   }
 }
+
 .close {
   width: 18px;
   height: 18px;
@@ -46,18 +47,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 18px;
+    height: 18px;
     background-color: var(--header-text);
+    border-radius: 40%;
     fill: var(--title-text);
     @include transition(fill);
     border: none;
     cursor: pointer;
 
-    &:hover,
-    &:focus {
-      fill: var(--accent-color);
+    &-svg:hover,
+    &-svg:focus {
+      fill: var(--header-text);
     }
+  }
+  &-btn:hover,
+  &-btn:focus {
+    background-color: var(--accent-color);
   }
 }
 
@@ -95,7 +101,6 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
-  color: var(--title-text);
   text-transform: uppercase;
   @media screen and (min-width: 1024px) {
     font-size: 30px;
@@ -119,7 +124,6 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: var(--modal-titles-color);
 
   &:not(:last-child) {
     padding-bottom: 10px;
@@ -135,7 +139,6 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: var(--title-text);
 
   &:not(:last-child) {
     padding-bottom: 10px;
@@ -149,7 +152,6 @@
   height: 16px;
   border-radius: 5px;
   border: none;
-  color: var(--header-text);
   background-color: var(--rating-color);
 }
 
@@ -167,7 +169,6 @@
 .card-records_description {
   font-weight: 500;
   font-size: 12px;
-  color: var(--title-text);
   line-height: 20px;
 }
 
@@ -178,7 +179,6 @@
   font-size: 12px;
   line-height: 16px;
   text-transform: uppercase;
-  color: var(--title-text);
 }
 
 .uppercase {
@@ -203,7 +203,7 @@
   font-size: 12px;
   line-height: 16px;
   border: 1px solid var(--title-text);
-  background-color: transparent;
+  // background-color: transparent;
   box-sizing: border-box;
   border-radius: 5px;
   text-transform: uppercase;
@@ -273,4 +273,13 @@
       margin-right: 15px;
     }
   }
+}
+.modal-window.dark-theme {
+  background-color: #3d3939;
+  color: var(--header-text);
+}
+
+.modal-window.light-theme {
+  background-color: var(--header-text);
+  color: var(--title-text);
 }
