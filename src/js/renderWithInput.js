@@ -1,25 +1,58 @@
+import { headerInputField, paginationContainer, listElement } from '../js/refs';
+import errorUrl from '../images/something_went_wrong.webp';
 import NewApiService from './apiServise';
-import { searchInput, listElement } from './refs';
-import filmCard from '../templates/film-cards.hbs';
+import Pagination from 'tui-pagination';
+import {
+  options,
+  popularMovieRender,
+  renderMovie,
+  dateAndGenreNormalization,
+} from './paginationRender';
+import { scrollPage } from './buttonUp.js';
+import { debounce } from 'lodash';
 
+const DEBOUNCE_DELAY = 300;
+const newApiService = new NewApiService();
+const pagination = new Pagination(paginationContainer, options);
 
-const SearchFilmApiServis = new NewApiService();
-const debounce = require('lodash.debounce');
-const DEBOUNCE_DELAY = 400;
-
-searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
+headerInputField.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(e) {
-    const inputValue = e.target.value.trim();
-    if (inputValue.length === 0) {
-        SearchFilmApiServis.fetchPopularMovie();
-        
-    } else {
-        SearchFilmApiServis.searchQuery = inputValue;
-        SearchFilmApiServis.fetchByInputValue().then(data=>{
-            appendFilmCardsMarkup(data.results);
-            console.log(data);
-        })
-       
-    }
+  const inputValue = e.target.value.trim();
+
+  if (inputValue.length === 0) {
+    popularMovieRender();
+  } else {
+    newApiService.searchQuery = inputValue;
+    firstRenderOfMovie();
+  }
 }
+
+function firstRenderOfMovie() {
+  newApiService
+    .fetchByInputValue(pagination.getCurrentPage())
+    .then(data => {
+      pagination.reset(data.total_pages);
+      renderMovie(dateAndGenreNormalization(data));
+    })
+    .catch(err => {
+      console.log('error in function render');
+      listElement.innerHTML = `<img  src="${errorUrl}" />`;
+    });
+}
+
+pagination.on('afterMove', event => {
+  const currentPage = event.page;
+
+  newApiService
+    .fetchByInputValue(currentPage)
+    .then(data => {
+      renderMovie(dateAndGenreNormalization(data));
+    })
+    .catch(err => {
+      console.log('error in function render');
+      listElement.innerHTML = `<img  src="${errorUrl}" />`;
+    });
+
+  scrollPage();
+});
