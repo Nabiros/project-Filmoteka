@@ -43,6 +43,7 @@ function firstRenderOfMovie() {
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
+  listElement.innerHTML = '';
 
   newApiService
     .fetchByInputValue(currentPage)
