@@ -80,5 +80,3 @@ export function renderMovie(movies) {
   listElement.innerHTML = markup;
   return markup;
 }
-
-export { renderMovie };
