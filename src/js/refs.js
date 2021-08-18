@@ -18,6 +18,11 @@ const watchedBtn = document.querySelector('[data-name="watched"]');
 const queueBtn = document.querySelector('[data-name="queue"]');
 const searchInput = document.querySelector('.header-input__field');
 
+const watchedBtnModal = document.querySelector('[data-name="watched-modal"]');
+const queueBtnModal = document.querySelector('[data-name="queue-modal"]');
+
+const layout = document.querySelector('.cards-list');
+
 export {
   listElement,
   btnUp,
@@ -34,4 +39,7 @@ export {
   watchedBtn,
   queueBtn,
   searchInput,
+  watchedBtnModal,
+  queueBtnModal,
+  layout,
 };

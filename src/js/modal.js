@@ -2,7 +2,7 @@ import NewApiService from './apiServise.js';
 import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 import spinner from './spinner';
-import { listElement, closeModalBtn, modal, movieModalCard, watchedBtn, queueBtn } from '../js/refs';
+import { listElement, closeModalBtn, modal, movieModalCard, watchedBtnModal, queueBtnModal } from '../js/refs';
 import { onWatchedLibraryBtnClick, onQueueLibraryBtnClick, watchedLibrary, queueLibrary } from './newLocalStorage';
 
 const newApiService = new NewApiService();
@@ -13,15 +13,6 @@ async function modalWindowOpenHandler(event) {
   event.preventDefault();
   const movieID = event.target.dataset.id;
 
-  if (watchedLibrary.includes(movieID)) {
-    // console.log('it works');
-    watchedBtn.innerHTML = 'remove from watched';
-  }
-
-  if(queueLibrary.includes(movieID)) {
-    queueBtn.textContent = 'remove from watched';
-  }
-  
   closeModalBtn.addEventListener('click', modalWindowCloseHandler);
   modal.addEventListener('click', backdropClickHandler);
   window.addEventListener('keydown', escKeyPressHandler);
@@ -46,6 +37,7 @@ function modalWindowCloseHandler(event) {
   window.removeEventListener('keydown', escKeyPressHandler);
   modal.removeEventListener('click', onWatchedLibraryBtnClick);
   modal.removeEventListener('click', onQueueLibraryBtnClick);
+
 
   modal.classList.add('visually-hidden');
   movieModalCard.innerHTML = '';
@@ -79,9 +71,20 @@ async function renderMovieByID(movieID) {
     
     movie.popularity = (movie.popularity).toFixed(1);
     movieModalCard.innerHTML = movieModalTemplate(movie);
+
+    const checkWatchedBtn = document.querySelector('.watched-library-button');
+    const checkQueueBtn = document.querySelector('.queue-library-button');
+
+    if(watchedLibrary.includes(movieID)) {
+      checkWatchedBtn.innerHTML = 'remove from watched';
+    }
+
+    if(queueLibrary.includes(movieID)) {
+      checkQueueBtn.innerHTML = 'remove from queue';
+    }
   }
     catch(error) {
       console.log('error in function render');
       movieModalCard.innerHTML = `<img  src="${errorUrl}" />`;
     };
-}
+  }

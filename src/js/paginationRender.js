@@ -76,3 +76,5 @@ function renderMovie(movies) {
   return markup;
 }
 
+export { renderMovie };
+
