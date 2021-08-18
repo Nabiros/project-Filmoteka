@@ -4,6 +4,10 @@ import NewApiService from './apiServise';
 import errorUrl from '../images/something_went_wrong.webp';
 import { scrollPage } from './buttonUp.js';
 import Pagination from 'tui-pagination';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 btnUp.addEventListener('click', scrollPage);
 
