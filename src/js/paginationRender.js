@@ -17,7 +17,7 @@ newApiService.fetchByGenres().then(r => {
   localStorage.setItem('listOfGenres', JSON.stringify(r));
 });
 
-function genresList() {
+export function genresList() {
   const listOfGenres = localStorage.getItem('listOfGenres');
   return JSON.parse(listOfGenres);
 }

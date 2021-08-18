@@ -8,8 +8,10 @@ const myLibraryBtn = document.querySelector('.header-library__btn');
 const headerStyle = document.querySelector('header');
 const libButtons = document.querySelector('.library-buttons');
 const listOfStudents = document.querySelector('.footer-text-dec');
+const watchedBtnModal = document.querySelector('[data-name="watched-modal"]');
+const queueBtnModal = document.querySelector('[data-name="queue-modal"]');
 
-
+const layout = document.querySelector('.cards-list');
 
 const closeModalBtn = document.querySelector('.js-close-btn');
 const modal = document.querySelector('.js-backdrop');
@@ -24,6 +26,9 @@ const searchInput = document.querySelector('.header-input__field');
 export {
   listElement,
   btnUp,
+  watchedBtnModal,
+  queueBtnModal,
+  layout,
   headerInput,
   headerInputField,
   homeBtn,
