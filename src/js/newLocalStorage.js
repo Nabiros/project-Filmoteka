@@ -1,5 +1,5 @@
 import movieCards from '../templates/film-cards.hbs';
-import { listElement, layout } from './refs';
+import { listElement, layout, paginationContainer } from './refs';
 import NewApiService from './apiServise';
 
 const newApiService = new NewApiService();
@@ -55,31 +55,54 @@ export const onQueueLibraryBtnClick = (e) => {
 
 export const extractWatched = () => {
     clearMarkup(layout);
+    paginationContainer.style.display = 'inherit';
     watchedLibrary;
-    console.log(watchedLibrary);
+    // console.log(watchedLibrary);
+
     if (watchedLibrary.length === 0) {
-        layout.insertAdjacentHTML('beforeend', "No movies to display");        
+        layout.insertAdjacentHTML('beforeend', "No movies to display");
+        paginationContainer.style.display = 'none';        
     }
     
     watchedLibrary.forEach(storedMovie => {
-        console.log(storedMovie);
+        // console.log(storedMovie);
         const getStoredMovie = newApiService.fetchMovieById(storedMovie);
-        console.log(getStoredMovie);
+        // console.log(getStoredMovie);
 
-        const markup = movieCards(getStoredMovie);
-        listElement.innerHTML = markup;
-        return markup;
+        getStoredMovie.then(data => {
+            listElement.innerHTML = movieCards(data);
+            // console.log(data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
     })
 }
 
 export const extractQueue = () => {
     clearMarkup(layout);
+    paginationContainer.style.display = 'inherit';
     queueLibrary;
-    console.log(queueLibrary);
+    // console.log(queueLibrary);
+
     if (queueLibrary.length === 0) {
-        layout.insertAdjacentHTML('beforeend', "No movies to display");       
+        layout.insertAdjacentHTML('beforeend', "No movies to display");
+        paginationContainer.style.display = 'none';
+        return
     }
-    console.log('queue');
+    queueLibrary.forEach(storedMovie => {
+        // console.log(storedMovie);
+        const getStoredMovie = newApiService.fetchMovieById(storedMovie);
+        // console.log(getStoredMovie);
+
+        getStoredMovie.then(data => {
+            listElement.innerHTML = movieCards(data);
+            // console.log(data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    })
 }
 
 const clearMarkup = el => {
