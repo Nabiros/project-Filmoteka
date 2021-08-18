@@ -1,4 +1,6 @@
 import { paginationContainer, listElement } from '../js/refs';
+import movieCards from '../templates/film-cards.hbs';
+import genresList from '../templates/film-cards.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 import NewApiService from './apiServise';
 import Pagination from 'tui-pagination';
@@ -18,60 +20,69 @@ const pagination = new Pagination(paginationContainer, options);
 // const listElement = document.querySelector('.js-card');
 
 const genresInput = document.querySelector('.genres-input');
-const genresList = document.querySelector('.genres-list');
+// const genresList = document.querySelector('.genres-list');
 
 genresInput.addEventListener('click', onGenresListSearch);
 
 function onGenresListSearch(e) {
     e.preventDefault();
     genresList.innerHTML = '';
-     renderGenresList(genres.name);
+     renderGenresList(genre);
 }
 
-function renderGenresList() {
+function renderGenresList(genre) {
     newApiService.fetchByGenres();
         
-    const genresListMarkup = createGenresListMarkup(genres.name);
-    genresList.innerHTML = ('beforeend', genresListMarkup);
-    console.log(genresList.innerHTML);
+    const genresListMarkup = genresList(genre);
+    genresList.innerHTML = ('afterbegin', genresListMarkup);
+    // console.log(genresList.innerHTML);
 }
 
-function createGenresListMarkup(genres) {
-    return genres.map(genre => `<li class = "genre-title">${genres.name}</li>`).join('');
-}
+// function createGenresListMarkup(genres) {
+//     return genres.map(genre => `<li class = "genre-title">${genres.name}</li>`).join('');
+// }
 
 
 // Рендерим фильмы по жанрам
 
 // const genresInput = document.querySelector('.genres-input');
 // const genresList = document.querySelector('.genres-list');
-// const clickedGenreTitle = document.querySelector('.genre-title');
-// const genresInputField = document.querySelector('.genres-input__field');
+const clickedGenreTitle = document.querySelector('.genre-title');
+const genresInputField = document.querySelector('.genres-input__field');
 
-// genresInputField.addEventListener('submit', onSearchMoviesByGenre)
-// clickedGenreTitle.addEventListener('click', onSearchByGenre);
+clickedGenreTitle.addEventListener('click', onInsertGenreIntoInput);
+genresInputField.addEventListener('submit', onSearchMoviesByGenre);
 
-// function onSearchByGenre(e) {
-//     const clickedGenreTitle = e.target.value;
-//     // console.log(e.target.value);
-//   genresInputField.value = clickedGenreTitle.textContent;
 
-//    newApiService.searchQuery = genresInputValue;
-//     genreRenderOfMovie();
-//   }
+function onInsertGenreIntoInput(e) {
 
-// function genreRenderOfMovie() {
-//   newApiService
-//     .fetchByGenreBtn(pagination.getCurrentPage())
-//     .then(data => {
-//       pagination.reset(data.total_pages);
-//       renderMovie(dateAndGenreNormalization(data));
-//     })
-//     .catch(err => {
-//       console.log('error in function render');
-//       listElement.innerHTML = `<img  src="${errorUrl}" />`;
-//     });
-// }
+    const clickedGenreTitle = e.target.value;
+    // console.log(e.target.value);
+  genresInputField.value = clickedGenreTitle.textContent;
+
+  //  newApiService.searchQuery = genresInputValue;
+  //   genreRenderOfMovie();
+}
+  
+function onSearchMoviesByGenre(e) {
+  onInsertGenreIntoInput();
+  newApiService.searchQuery = genresInputField.value;
+  genreRenderOfMovie();
+}
+
+function genreRenderOfMovie() {
+  newApiService
+    .fetchByGenreBtn(pagination.getCurrentPage())
+    .then(data => {
+      pagination.reset(data.total_pages);
+      renderMovie(dateAndGenreNormalization(data));
+    })
+    .catch(err => {
+      console.log('error in function render');
+      listElement.innerHTML = `<img  src="${errorUrl}" />`;
+    });
+}
+
 
 
 // function appendMoviesMarkup(movies) {

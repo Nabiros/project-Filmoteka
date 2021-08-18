@@ -43,33 +43,6 @@ function firstRenderOfMovie() {
     });
 }
 
-const genresInput = document.querySelector('.genres-input__field');
-
-function onSearchByGenre(e) {
-  const genresInputValue = e.target.value.trim();
-
-  if (genresInputValue.length === 0) {
-    popularMovieRender();
-  } else {
-    newApiService.searchQuery = genresInputValue;
-    genreRenderOfMovie();
-  }
-}
-
-function genreRenderOfMovie() {
-  newApiService
-    .fetchByGenreBtn(pagination.getCurrentPage())
-    .then(data => {
-      pagination.reset(data.total_pages);
-      renderMovie(dateAndGenreNormalization(data));
-    })
-    .catch(err => {
-      console.log('error in function render');
-      listElement.innerHTML = `<img  src="${errorUrl}" />`;
-    });
-}
-
-
 pagination.on('afterMove', event => {
   const currentPage = event.page;
 
