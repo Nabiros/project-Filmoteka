@@ -7,6 +7,9 @@ const homeBtn = document.querySelector('.header-home__btn');
 const myLibraryBtn = document.querySelector('.header-library__btn');
 const headerStyle = document.querySelector('header');
 const libButtons = document.querySelector('.library-buttons');
+const listOfStudents = document.querySelector('.footer-text-dec');
+
+
 
 const closeModalBtn = document.querySelector('.js-close-btn');
 const modal = document.querySelector('.js-backdrop');
@@ -36,6 +39,7 @@ export {
   modal,
   movieModalCard,
   paginationContainer,
+  listOfStudents,
   watchedBtn,
   queueBtn,
   searchInput,

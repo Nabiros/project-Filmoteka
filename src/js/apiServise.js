@@ -13,12 +13,12 @@ export default class NewApiService {
     const response = await axios.get(
       `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${page}`,
     );
-     return response.data;
+    return response.data;
   }
 
-  async fetchByInputValue() {
+  async fetchByInputValue(page) {
     const response = await axios.get(
-      `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`,
+      `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${page}&query=${this.searchQuery}`,
     );
     return response.data;
   }
@@ -39,7 +39,4 @@ export default class NewApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
-
 }
-
-
