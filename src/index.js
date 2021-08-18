@@ -4,3 +4,7 @@ import './js/modal';
 import './js/paginationRender';
 import './js/spinner';
 import './js/theme';
+import './js/listOfParticipants'
+import './../node_modules/basiclightbox/dist/basicLightbox.min.css';
+import './js/renderWithInput';
+import './js/newLocalStorage';
