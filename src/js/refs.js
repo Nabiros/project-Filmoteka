@@ -17,6 +17,10 @@ const movieModalCard = document.querySelector('.js-card-modal');
 
 const paginationContainer = document.getElementById('tui-pagination-container');
 
+const watchedBtn = document.querySelector('[data-name="watched"]');
+const queueBtn = document.querySelector('[data-name="queue"]');
+const searchInput = document.querySelector('.header-input__field');
+
 export {
   listElement,
   btnUp,
@@ -31,4 +35,7 @@ export {
   movieModalCard,
   paginationContainer,
   listOfStudents,
+  watchedBtn,
+  queueBtn,
+  searchInput,
 };

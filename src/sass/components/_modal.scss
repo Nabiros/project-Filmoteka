@@ -192,7 +192,47 @@
   }
 }
 
-.card-button {
+.watched-library-button {
+  width: 112.58px;
+  height: 44px;
+  padding: 0 9px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  border: 1px solid var(--title-text);
+  background-color: transparent;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  @include transition(color);
+  @include transition(background-color);
+
+  &:hover {
+    border: none;
+    color: var(--header-text);
+    background: var(--rating-color);
+    @include transition(border);
+    @include transition(color);
+    @include transition(background-color);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 125px;
+    height: 44px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+    height: 44px;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+}
+
+.queue-library-button {
   width: 112.58px;
   height: 44px;
   padding: 0 9px;

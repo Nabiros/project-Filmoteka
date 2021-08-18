@@ -6,3 +6,4 @@ import './js/spinner';
 import './js/listOfParticipants'
 import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './js/renderWithInput';
+import './js/newLocalStorage';
