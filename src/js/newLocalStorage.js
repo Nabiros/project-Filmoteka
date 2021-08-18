@@ -4,8 +4,8 @@ import NewApiService from './apiServise';
 
 const newApiService = new NewApiService();
 
-export const watchedLibrary = JSON.parse(localStorage.getItem('watchedLibrary'));
-export const queueLibrary = JSON.parse(localStorage.getItem('queueLibrary'));
+export const watchedLibrary = JSON.parse(localStorage.getItem('watchedLibrary')) || [];
+export const queueLibrary = JSON.parse(localStorage.getItem('queueLibrary')) || [];
 
 export const onWatchedLibraryBtnClick = (e) => {
     if (e.target.className === 'watched-library-button') {
