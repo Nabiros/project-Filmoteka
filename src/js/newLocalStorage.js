@@ -4,8 +4,10 @@ import NewApiService from './apiServise';
 
 const newApiService = new NewApiService();
 
-export const watchedLibrary = JSON.parse(localStorage.getItem('watchedLibrary'));
-export const queueLibrary = JSON.parse(localStorage.getItem('queueLibrary'));
+export const watchedLibrary = localStorage.getItem('watchedLibrary')
+? JSON.parse(localStorage.getItem('watchedLibrary')) : [];
+export const queueLibrary = localStorage.getItem('queueLibrary')
+? JSON.parse(localStorage.getItem('queueLibrary')) : [];
 
 export const onWatchedLibraryBtnClick = (e) => {
     if (e.target.className === 'watched-library-button') {
@@ -55,8 +57,11 @@ export const onQueueLibraryBtnClick = (e) => {
 
 export const extractWatched = () => {    
     paginationContainer.style.display = 'inherit';
-    watchedLibrary;
+    // const watchedLibrary = localStorage.getItem('watchedLibrary')
+    // ? JSON.parse(localStorage.getItem('watchedLibrary')) : [];
+    // watchedLibrary;
     // console.log(watchedLibrary);
+    let watched = []
 
     if (watchedLibrary.length === 0) {
         alert('No movies to display');
@@ -64,25 +69,29 @@ export const extractWatched = () => {
         // layout.insertAdjacentHTML('beforeend', "No movies to display");
         paginationContainer.style.display = 'none';        
     }
-    
-    watchedLibrary.forEach(storedMovie => {
-        console.log(storedMovie);
-        const getStoredMovie = newApiService.fetchMovieById(storedMovie);
-        // console.log(getStoredMovie);
 
-        getStoredMovie.then(data => {
-            const markup = [];
-            console.log(data);
-            markup.push(data);
-            console.log(markup);
-            const layout = movieCards(markup)
-            listElement.innerHTML = layout;
-            // appendMarkup(listElement, markup);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    })
+    for(let i= 0; i < watchedLibrary.length; i += 1){
+       newApiService.fetchMovieById(Number(watchedLibrary[i])).then(result => watched.push(result));
+    } console.log(watched)
+    
+    // watchedLibrary.forEach(storedMovie => {
+    //     console.log(storedMovie);
+    //     const getStoredMovie = newApiService.fetchMovieById(storedMovie);
+    //     // console.log(getStoredMovie);
+
+    //     getStoredMovie.then(data => {
+    //         const markup = [];
+    //         console.log(data);
+    //         markup.push(data);
+    //         console.log(markup);
+    //         const layout = movieCards(markup)
+    //         listElement.innerHTML = layout;
+    //         // appendMarkup(listElement, markup);
+    //     })
+        // .catch(error => {
+        //     console.log(error);
+        // });
+    // })
 }
 
 export const extractQueue = () => {    
