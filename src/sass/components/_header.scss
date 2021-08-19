@@ -297,3 +297,10 @@
     @include transition(filter);
   }
 }
+
+.current-btn {
+  background-color: var(--rating-color);
+  filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  border-color: var(--rating-color);
+  cursor: pointer;
+}

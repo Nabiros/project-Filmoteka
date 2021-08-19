@@ -1,7 +1,19 @@
-import { headerInput, homeBtn, myLibraryBtn, headerStyle, libButtons } from '../js/refs';
+import {
+  headerInput,
+  homeBtn,
+  myLibraryBtn,
+  headerStyle,
+  libButtons,
+  watchedBtn,
+  queueBtn,
+} from '../js/refs';
+import { popularMovieRender } from './paginationRender';
+import { renderWatched, renderQueue } from './paginationMyLibrary';
 
 homeBtn.addEventListener('click', onHomeBtnClick);
 myLibraryBtn.addEventListener('click', onLibraryBtnClick);
+watchedBtn.addEventListener('click', onWatchedBtnClick);
+queueBtn.addEventListener('click', onQueueBtnClick);
 
 function onHomeBtnClick() {
   headerStyle.classList.replace('header-library-img', 'header-home-img');
@@ -9,6 +21,8 @@ function onHomeBtnClick() {
   addClass(homeBtn, 'current');
   removeClass(headerInput, 'is-hidden');
   removeClass(myLibraryBtn, 'current');
+
+  popularMovieRender();
 }
 
 function onLibraryBtnClick() {
@@ -17,6 +31,20 @@ function onLibraryBtnClick() {
   addClass(myLibraryBtn, 'current');
   removeClass(libButtons, 'is-hidden');
   removeClass(homeBtn, 'current');
+
+  renderWatched();
+}
+
+function onWatchedBtnClick() {
+  removeClass(queueBtn, 'current-btn');
+  addClass(watchedBtn, 'current-btn');
+  renderWatched();
+}
+
+function onQueueBtnClick() {
+  removeClass(watchedBtn, 'current-btn');
+  addClass(queueBtn, 'current-btn');
+  renderQueue();
 }
 
 function removeClass(el, className) {
