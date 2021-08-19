@@ -47,11 +47,15 @@ export function popularMovieRender() {
 }
 
 export function dateAndGenreNormalization(data) {
-  return data.results.map(movie => ({
-    ...movie,
-    release_date: movie.release_date.split('-')[0],
-    genres: movie.genre_ids.map(id => genresList().filter(el => el.id === id)).flat(),
-  }));
+  const result = data.results.map(movie => {
+    const release_date = movie.release_date ? movie.release_date : '2020-00-00'; //добавьте проверку на корректность поля movie.release_date
+    return {
+      ...movie,
+      release_date: release_date,
+      genres: movie.genre_ids.map(id => genresList().filter(el => el.id === id)).flat(),
+    };
+  });
+  return result;
 }
 
 pagination.on('afterMove', event => {
