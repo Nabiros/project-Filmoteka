@@ -30,7 +30,7 @@ body.light-theme {
 }
 
 .theme-switch__icon {
-  color: currentColor;
+  color: var(--header-text);
   height: 22px;
   width: 22px;
   margin-right: 8px;
