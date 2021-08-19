@@ -19,14 +19,12 @@ export async function renderWatched() {
   const result = await extractWatched();
 
   if (result.length === 0) {
-    alert('No movies to display');
+    listElement.innerHTML = `<img  src="${emptyImg}" />`;
   }
   pagination.reset(result.length);
   const moviesArrays = createPages(result);
   renderMovie(moviesArrays[0]);
 }
-
-// не считает страницы
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
@@ -39,7 +37,7 @@ pagination.on('afterMove', event => {
 export function getMovieArray(extract, page) {
   extract().then(data => {
     if (data.length === 0) {
-      alert('No movies to display');
+      listElement.innerHTML = `<img  src="${emptyImg}" />`;
     }
     const moviesArrays = createPages(data);
     console.log(moviesArrays);
