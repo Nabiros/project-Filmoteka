@@ -5,8 +5,10 @@ import './js/paginationRender';
 import './js/spinner';
 import './js/listOfParticipants';
 import './js/theme';
-import './js/listOfParticipants'
+import './js/listOfParticipants';
 import './../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './js/renderWithInput';
 import './js/newLocalStorage';
 import './js/paginationMyLibrary';
+import './js/localStPages';
+import './js/queueBtn';

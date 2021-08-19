@@ -8,7 +8,8 @@ import {
   queueBtn,
 } from '../js/refs';
 import { popularMovieRender } from './paginationRender';
-import { renderWatched, renderQueue } from './paginationMyLibrary';
+import { renderWatched } from './paginationMyLibrary';
+import { renderQueue } from './queueBtn';
 
 homeBtn.addEventListener('click', onHomeBtnClick);
 myLibraryBtn.addEventListener('click', onLibraryBtnClick);
