@@ -11,19 +11,7 @@ body.light-theme {
 .toolbar {
   display: flex;
   justify-content: flex-end;
-  padding: 0px 225px;
-}
-@media screen and(min-width:320px) {
-  .toolbar {
-    justify-content: center;
-    padding: 0px 100px 20px 100px;
-  }
-}
-@media screen and(min-width:768px) {
-  .toolbar {
-    justify-content: flex-end;
-    padding: 0px 225px 20px 70px;
-  }
+  padding: 0px 24px 20px 24px;
 }
 
 /* THEME SWITCH */
