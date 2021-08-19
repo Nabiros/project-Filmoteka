@@ -1,5 +1,6 @@
 import { listElement, layout, paginationContainer } from './refs';
 import NewApiService from './apiServise';
+import emptyImg from '../images/empty.jpg';
 
 const newApiService = new NewApiService();
 const wachedFilms = [];
@@ -48,7 +49,7 @@ export async function extractWatched() {
   let watched = [];
 
   if (watchedLibrary.length === 0) {
-    alert('No movies to display');
+    listElement.innerHTML = `<img  src="${emptyImg}" />`;
     paginationContainer.style.display = 'none';
   }
   for (const id of watchedLibrary) {
@@ -64,7 +65,7 @@ export async function extractQueue() {
   let queue = [];
 
   if (queueLibrary.length === 0) {
-    alert('No movies to display');
+    listElement.innerHTML = `<img  src="${emptyImg}" />`;
     paginationContainer.style.display = 'none';
   }
   for (const id of queueLibrary) {

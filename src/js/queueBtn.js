@@ -20,7 +20,7 @@ export async function renderQueue() {
   const result = await extractQueue();
 
   if (result.length === 0) {
-    alert('No movies to display');
+    listElement.innerHTML = `<img  src="${emptyImg}" />`;
   }
   pagination.reset(result.length);
   const moviesArrays = createPages(result);
