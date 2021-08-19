@@ -1,6 +1,10 @@
 import { listElement, layout, paginationContainer } from './refs';
 import NewApiService from './apiServise';
 import emptyImg from '../images/empty.jpg';
+import { renderWatched } from './paginationMyLibrary';
+import { renderQueue } from './queueBtn';
+
+
 
 const newApiService = new NewApiService();
 const wachedFilms = [];
@@ -22,6 +26,7 @@ export const onWatchedLibraryBtnClick = e => {
       e.target.textContent = 'add to watched';
     }
     localStorage.setItem('watchedLibrary', JSON.stringify(watchedLibrary));
+    renderWatched();
   }
 };
 export const onQueueLibraryBtnClick = e => {
@@ -39,6 +44,7 @@ export const onQueueLibraryBtnClick = e => {
       e.target.textContent = 'add to queue';
     }
     localStorage.setItem('queueLibrary', JSON.stringify(queueLibrary));
+    renderQoeue();
   }
 };
 
