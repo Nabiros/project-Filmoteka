@@ -44,7 +44,7 @@ export const onQueueLibraryBtnClick = e => {
       e.target.textContent = 'add to queue';
     }
     localStorage.setItem('queueLibrary', JSON.stringify(queueLibrary));
-    renderQoeue();
+    renderQueue();
   }
 };
 
