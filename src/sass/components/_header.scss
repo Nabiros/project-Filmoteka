@@ -172,6 +172,7 @@
 
 .header-input {
   position: relative;
+  margin-bottom: 44px;
 
   @media screen and(min-width:768px) {
     width: 336px;
@@ -264,6 +265,7 @@
 
 .library-buttons {
   margin-top: 45px;
+  margin-bottom: 20px;
 }
 
 .library-buttons__list {
