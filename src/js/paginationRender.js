@@ -48,7 +48,7 @@ export function popularMovieRender() {
 
 export function dateAndGenreNormalization(data) {
   const result = data.results.map(movie => {
-    const release_date = movie.release_date ? movie.release_date : '2020-00-00'; //добавьте проверку на корректность поля movie.release_date
+    const release_date = movie.release_date ? movie.release_date.split('-')[0] : '2020-00-00'; //добавьте проверку на корректность поля movie.release_date
     return {
       ...movie,
       release_date: release_date,

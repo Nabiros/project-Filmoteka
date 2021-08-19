@@ -9,6 +9,7 @@ import 'aos/dist/aos.css';
 import { options, renderMovie, dateAndGenreNormalization } from './paginationRender';
 import { extractWatched } from './newLocalStorage';
 
+
 AOS.init();
 
 btnUp.addEventListener('click', scrollPage);
@@ -23,7 +24,9 @@ export async function renderWatched() {
   }
   pagination.reset(result.length);
   const moviesArrays = createPages(result);
-  renderMovie(moviesArrays[0]);
+  console.log(moviesArrays[0]);
+  const i = normalization(moviesArrays[0])
+  renderMovie(i);
 }
 
 pagination.on('afterMove', event => {
@@ -45,9 +48,30 @@ export function getMovieArray(extract, page) {
     for (let i = 0; i < moviesArrays.length; i += 1) {
       if (i === page - 1) {
         console.log(moviesArrays[i]);
-        const markup = renderMovie(moviesArrays[i]);
+        const p = normalization(moviesArrays[i]);
+        const markup = renderMovie(p);
         return markup;
       }
     }
   });
 }
+function genresList() {
+  const listOfGenres = localStorage.getItem('listOfGenres');
+  return JSON.parse(listOfGenres);
+}
+
+
+function normalization(data) {
+  const result = data.map(movie => {
+    const release_date = movie.release_date ? movie.release_date.split('-')[0] : '2020-00-00'; //добавьте проверку на корректность поля movie.release_date
+    const genres = movie.genres ? movie.genres.map(ev => genresList().filter(el => el.id === ev.id)).flat() : 'n/a';
+    return {
+      ...movie,
+      release_date: release_date,
+      genres: genres,
+    };
+  });
+  return result;
+}
+
+
