@@ -11,3 +11,4 @@ import './js/renderWithInput';
 import './js/newLocalStorage';
 import './js/paginationMyLibrary';
 import './js/localStPages';
+import './js/queueBtn';
