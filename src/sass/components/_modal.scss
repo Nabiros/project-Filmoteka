@@ -203,7 +203,7 @@
   font-size: 12px;
   line-height: 16px;
   border: 1px solid var(--title-text);
-  // background-color: transparent;
+  background-color: var(--header-text);
   box-sizing: border-box;
   border-radius: 5px;
   text-transform: uppercase;
@@ -243,7 +243,7 @@
   font-size: 12px;
   line-height: 16px;
   border: 1px solid var(--title-text);
-  background-color: transparent;
+  background-color: var(--header-text);
   box-sizing: border-box;
   border-radius: 5px;
   text-transform: uppercase;
