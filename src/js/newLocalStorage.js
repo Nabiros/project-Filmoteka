@@ -1,6 +1,8 @@
 import { listElement, layout, paginationContainer } from './refs';
 import NewApiService from './apiServise';
 import emptyImg from '../images/empty.jpg';
+import { renderWatched } from './paginationMyLibrary';
+import { renderQueue } from './queueBtn';
 
 const newApiService = new NewApiService();
 const wachedFilms = [];
@@ -13,30 +15,34 @@ export const onWatchedLibraryBtnClick = e => {
     const id = e.target.dataset.id;
 
     const index = watchedLibrary.indexOf(id);
-    if (index == -1) {
+    if (index === -1) {
       watchedLibrary.push(id);
       localStorage.setItem('watchedLibrary', JSON.stringify(watchedLibrary));
       e.target.textContent = 'remove from watched';
     } else {
       watchedLibrary.splice(index, 1);
+      // console.log(watchedLibrary);
       e.target.textContent = 'add to watched';
+      renderWatched(watchedLibrary);
     }
     localStorage.setItem('watchedLibrary', JSON.stringify(watchedLibrary));
   }
 };
+
 export const onQueueLibraryBtnClick = e => {
   if (e.target.className === 'queue-library-button') {
     const id = e.target.dataset.id;
 
     const index = queueLibrary.indexOf(id);
 
-    if (index == -1) {
+    if (index === -1) {
       queueLibrary.push(id);
       localStorage.setItem('queueLibrary', JSON.stringify(queueLibrary));
       e.target.textContent = 'remove from queue';
     } else {
       queueLibrary.splice(index, 1);
       e.target.textContent = 'add to queue';
+      renderQueue(queueLibrary);
     }
     localStorage.setItem('queueLibrary', JSON.stringify(queueLibrary));
   }

@@ -72,18 +72,20 @@ const markup = `
     </svg></a>
   </li>
   <li class="team-card">
-    <img src="${smileyFace}" alt="test" class="team-image">
-    <p class="team-name">test</p>
+    <img src="${smileyFace}" alt="
+Oleksii" class="team-image">
+    <p class="team-name">
+Oleksii</p>
     <p class="team-role">Developer</p>
-    <a href="#" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
+    <a href="https://github.com/AlexDvor" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
       <use href="${gitHub}#github"></use>
     </svg></a>
    </li>
   <li class="team-card">
-    <img src="${smileyFace}" alt="test" class="team-image">
-    <p class="team-name">test</p>
+    <img src="${smileyFace}" alt="Oleksii" class="team-image">
+    <p class="team-name">Oleksii</p>
     <p class="team-role">Developer</p>
-    <a href="#" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
+    <a href="https://github.com/OleksiiGasly" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
       <use href="${gitHub}#github"></use>
     </svg></a>
    </li>

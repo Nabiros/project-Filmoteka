@@ -26,6 +26,7 @@ const modalEl = document.querySelector('.modal-window');
 const watchedBtn = document.querySelector('[data-name="watched"]');
 const queueBtn = document.querySelector('[data-name="queue"]');
 const searchInput = document.querySelector('.header-input__field');
+const wrapperEl = document.querySelector('.wrapper');
 
 export {
   listElement,
@@ -50,4 +51,5 @@ export {
   watchedBtn,
   queueBtn,
   searchInput,
+  wrapperEl
 };
