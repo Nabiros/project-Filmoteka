@@ -28,6 +28,9 @@ const queueBtn = document.querySelector('[data-name="queue"]');
 const searchInput = document.querySelector('.header-input__field');
 const wrapperEl = document.querySelector('.wrapper');
 
+const body = document.body;
+const inputCheckbox = document.querySelector('.theme-switch__toggle'); 
+
 export {
   listElement,
   btnUp,
@@ -51,5 +54,7 @@ export {
   watchedBtn,
   queueBtn,
   searchInput,
-  wrapperEl
+  body,
+  inputCheckbox,
+  wrapperEl,
 };
