@@ -9,22 +9,22 @@
             <h1 class="card-records__title">{{title}}</h1>
             <table class="card-records__info">
                 <tr>
-                    <td class="card-records__item" {{!-- width='108' height='26' vertical-align="top" --}}>Vote / Votes</td>
+                    <td class="card-records__item">Vote / Votes</td>
                     <td class="card-records__subitem">
                         <span class="card-records__vote">{{vote_average}}</span> /
                         <span class="card-records__votes">{{vote_count}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="card-records__item" {{!-- width='108' height='26' vertical-align="top" --}}>Popularity</td>
+                    <td class="card-records__item">Popularity</td>
                     <td class="card-records__subitem">{{popularity}}</td>
                 </tr>
                 <tr>
-                    <td class="card-records__item" {{!-- width='108' height='26' --}}>Original Title</td>
+                    <td class="card-records__item">Original Title</td>
                     <td class="card-records__subitem uppercase">{{original_title}}</td>
                 </tr>
                 <tr>
-                    <td class="card-records__item" {{!-- width='108' height='26' vertical-align="top" --}}>Genre</td>
+                    <td class="card-records__item">Genre</td>
                     <td class="card-records__subitem">{{#each genres}} {{name}}{{#unless @last}},{{/unless}} {{/each}}</td>
                 </tr>
             </table>
