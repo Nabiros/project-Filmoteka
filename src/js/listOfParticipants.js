@@ -2,15 +2,19 @@ import * as basicLightbox from 'basiclightbox';
 import spinner from './spinner';
 import { listOfStudents } from '../js/refs';
 import gitHub from '../images/gitHub.svg';
-import alexander from '../images/team/Alexander.jpg'
-import andrei from '../images/team/Andrei_2.jpg'
-import ivanka from '../images/team/Ivanka.jpg'
-import maria from '../images/team/Maria_2.jpg'
-import nazar from '../images/team/Nazar_2.jpg'
-import sergiy from '../images/team/Sergiy.jpg'
-import natalia from '../images/team/Natalia_2.jpg'
-import smileyFace from '../images/team/1568622546_2.jpeg'
-import reklama from '../images/team/reklama.jpg'
+import alexander from '../images/team/Alexander.jpg';
+import andrei from '../images/team/Andrei_2.jpg';
+import ivanka from '../images/team/Ivanka.jpg';
+import maria from '../images/team/Maria_2.jpg';
+import nazar from '../images/team/Nazar_2.jpg';
+import sergiy from '../images/team/Sergiy.jpg';
+import natalia from '../images/team/Natalia_2.jpg';
+import olexiiG from '../images/team/Olexii_G.jpg';
+import olexiiSh from '../images/team/OlexiiSh.jpg';
+
+
+import smileyFace from '../images/team/1568622546_2.jpeg';
+import reklama from '../images/team/reklama.jpg';
 
 
 const markup = `
@@ -72,20 +76,20 @@ const markup = `
     </svg></a>
   </li>
   <li class="team-card">
-    <img src="${smileyFace}" alt="
-Oleksii" class="team-image">
-    <p class="team-name">
-Oleksii</p>
+    <img src="${olexiiG}" alt="Oleksii" class="team-image">
+    <p class="team-name">Oleksii</p>
     <p class="team-role">Developer</p>
-    <a href="https://github.com/AlexDvor" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
+    <a href="https://github.com/OleksiiGasly" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
       <use href="${gitHub}#github"></use>
     </svg></a>
    </li>
   <li class="team-card">
-    <img src="${smileyFace}" alt="Oleksii" class="team-image">
-    <p class="team-name">Oleksii</p>
+    <img src="${olexiiSh}" alt="
+Oleksii" class="team-image">
+    <p class="team-name">
+Oleksii</p>
     <p class="team-role">Developer</p>
-    <a href="https://github.com/OleksiiGasly" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
+    <a href="https://github.com/Youralexey" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
       <use href="${gitHub}#github"></use>
     </svg></a>
    </li>
