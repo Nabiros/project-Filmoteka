@@ -4,11 +4,9 @@
 }
 
 .basicLightbox__placeholder {
-    @media screen and (max-width: (768px - 1)) {
+  @media screen and (max-width: (768px - 1)) {
     margin: 0;
-    padding-bottom: 200%;
   }
-
 }
 .team-wrapper {
   display: flex;
