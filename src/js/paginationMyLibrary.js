@@ -22,7 +22,7 @@ export async function renderWatched() {
   } else {
     pagination.reset(result.length);
     const moviesArrays = createPages(result);
-    console.log(moviesArrays[0]);
+
     const i = normalization(moviesArrays[0]);
     renderMovie(i);
   }
@@ -59,7 +59,7 @@ function genresList() {
   return JSON.parse(listOfGenres);
 }
 
-function normalization(data) {
+export function normalization(data) {
   const result = data.map(movie => {
     const release_date = movie.release_date ? movie.release_date.split('-')[0] : '2020-00-00'; //добавьте проверку на корректность поля movie.release_date
     const genres = movie.genres

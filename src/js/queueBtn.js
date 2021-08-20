@@ -8,6 +8,7 @@ import 'aos/dist/aos.css';
 import { options, renderMovie } from './paginationRender';
 import { extractQueue } from './newLocalStorage';
 import emptyImg from '../images/empty.jpg';
+import { normalization } from './paginationMyLibrary';
 
 AOS.init();
 
@@ -23,7 +24,9 @@ export async function renderQueue() {
   } else {
     pagination.reset(result.length);
     const moviesArrays = createPages(result);
-    renderMovie(moviesArrays[0]);
+
+    const i = normalization(moviesArrays[0]);
+    renderMovie(i);
   }
 }
 
