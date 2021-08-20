@@ -1,44 +1,30 @@
-import { bodyEl, switchInputEl, modalEl} from './refs';
+import { body, inputCheckbox, modalEl} from './refs';
 
 const Theme = {
-  LIGHT: 'light-theme',
-  DARK: 'dark-theme',
+    LIGHT: 'light-theme',
+    DARK: 'dark-theme',
 };
 
-reload();
+body.classList.add
+(localStorage.getItem('theme') ? localStorage.getItem('theme') : Theme.LIGHT,);
 
-switchInputEl.addEventListener('change', onSelectTheme);
-
-function onSelectTheme(evt) {
-  evt.preventDefault();
-
-  bodyEl.classList.add(Theme.DARK);
-  bodyEl.classList.toggle(Theme.LIGHT);
-
-  modalEl.classList.add(Theme.DARK);
-  modalEl.classList.toggle(Theme.LIGHT);
-
-  if (bodyEl.classList.value === 'dark-theme') {
-    localStorage.setItem('theme', Theme.DARK);
-  } else {
-    localStorage.setItem('theme', Theme.LIGHT);
-  }
+if (body.classList.value === Theme.DARK) {
+    inputCheckbox.checked = false;
 }
 
-function reload() {
-  const saveTheme = localStorage.getItem('theme');
-  if (saveTheme) {
-    if (saveTheme === 'dark-theme') {
-      switchInputEl.checked = false;
-      bodyEl.classList.add(Theme.DARK);
-      modalEl.classList.add(Theme.DARK);
-
-      localStorage.setItem('theme', Theme.DARK);
-    } else {
-      switchInputEl.checked = true;
-      bodyEl.classList.add(Theme.LIGHT);
-      modalEl.classList.add(Theme.LIGHT);
-      localStorage.setItem('theme', Theme.LIGHT);
+const checkedTheme = event => {
+    if (event.target.checked){
+        localStorage.setItem('theme', Theme.DARK);
+        body.classList.replace(Theme.LIGHT,Theme.DARK);
+        modalEl.classList.replace(Theme.LIGHT,Theme.DARK);
+    return;
     }
-  }
-}
+
+    localStorage.setItem('theme', Theme.LIGHT);
+    body.classList.add(Theme.LIGHT);
+    body.classList.remove(Theme.DARK);
+    modalEl.classList.add(Theme.LIGHT);
+    modalEl.classList.remove(Theme.DARK);
+};
+
+inputCheckbox.addEventListener('change', checkedTheme);
