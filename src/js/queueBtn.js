@@ -1,14 +1,13 @@
 import { listElement, btnUp, paginationContainer } from '../js/refs';
-
-import errorUrl from '../images/something_went_wrong.webp';
 import { scrollPage } from './buttonUp.js';
 import Pagination from 'tui-pagination';
 import { getMovieArray } from './paginationMyLibrary';
 import AOS from 'aos';
 import { createPages } from './localStPages';
 import 'aos/dist/aos.css';
-import { options, renderMovie, dateAndGenreNormalization } from './paginationRender';
+import { options, renderMovie } from './paginationRender';
 import { extractQueue } from './newLocalStorage';
+import emptyImg from '../images/empty.jpg';
 
 AOS.init();
 
@@ -19,12 +18,13 @@ const pagination = new Pagination(paginationContainer, options);
 export async function renderQueue() {
   const result = await extractQueue();
 
-  if (result.length === 0) {
+  if (!result || result.length === 0) {
     listElement.innerHTML = `<img  src="${emptyImg}" />`;
+  } else {
+    pagination.reset(result.length);
+    const moviesArrays = createPages(result);
+    renderMovie(moviesArrays[0]);
   }
-  pagination.reset(result.length);
-  const moviesArrays = createPages(result);
-  renderMovie(moviesArrays[0]);
 }
 
 pagination.on('afterMove', event => {

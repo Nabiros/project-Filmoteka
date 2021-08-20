@@ -5,7 +5,6 @@ import { renderWatched } from './paginationMyLibrary';
 import { renderQueue } from './queueBtn';
 
 const newApiService = new NewApiService();
-const wachedFilms = [];
 
 export const watchedLibrary = JSON.parse(localStorage.getItem('watchedLibrary')) || [];
 export const queueLibrary = JSON.parse(localStorage.getItem('queueLibrary')) || [];
@@ -50,32 +49,35 @@ export const onQueueLibraryBtnClick = e => {
 
 export async function extractWatched() {
   paginationContainer.style.display = 'inherit';
-  const watchedLibrary = JSON.parse(localStorage.getItem('watchedLibrary')).map(Number);
-
-  let watched = [];
-
-  if (watchedLibrary.length === 0) {
+  const watchedLibrary = JSON.parse(localStorage.getItem('watchedLibrary'));
+  if (!watchedLibrary || watchedLibrary.length === 0) {
     listElement.innerHTML = `<img  src="${emptyImg}" />`;
     paginationContainer.style.display = 'none';
+  } else {
+    watchedLibrary.map(Number);
+    let watched = [];
+
+    for (const id of watchedLibrary) {
+      watched.push(await newApiService.fetchMovieById(id));
+    }
+    return watched;
   }
-  for (const id of watchedLibrary) {
-    watched.push(await newApiService.fetchMovieById(id));
-  }
-  return watched;
 }
 
 export async function extractQueue() {
   paginationContainer.style.display = 'inherit';
-  const queueLibrary = JSON.parse(localStorage.getItem('queueLibrary')).map(Number);
+  let queueLibrary = JSON.parse(localStorage.getItem('queueLibrary'));
 
-  let queue = [];
-
-  if (queueLibrary.length === 0) {
+  if (!queueLibrary || queueLibrary.length === 0) {
     listElement.innerHTML = `<img  src="${emptyImg}" />`;
     paginationContainer.style.display = 'none';
+  } else {
+    queueLibrary.map(Number);
+    let queue = [];
+
+    for (const id of queueLibrary) {
+      queue.push(await newApiService.fetchMovieById(id));
+    }
+    return queue;
   }
-  for (const id of queueLibrary) {
-    queue.push(await newApiService.fetchMovieById(id));
-  }
-  return queue;
 }
