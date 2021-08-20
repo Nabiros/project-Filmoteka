@@ -74,12 +74,13 @@ pagination.on('afterMove', event => {
 });
 
 export function renderMovie(movies) {
-  movies.forEach(movie => {
-    if (movie.genres.length > 2) {
-      movie.genres = [...movie.genres.slice(0, 2), { name: 'Others' }];
-    }
-  });
-
+  if (movies) {
+    movies.forEach(movie => {
+      if (movie.genres.length > 2) {
+        movie.genres = [...movie.genres.slice(0, 2), { name: 'Others' }];
+      }
+    });
+  }
   const markup = movieCards(movies);
   listElement.innerHTML = markup;
   return markup;

@@ -32,6 +32,8 @@ function onLibraryBtnClick() {
   addClass(myLibraryBtn, 'current');
   removeClass(libButtons, 'is-hidden');
   removeClass(homeBtn, 'current');
+  removeClass(queueBtn, 'current-btn');
+  addClass(watchedBtn, 'current-btn');
 
   renderWatched();
 }
