@@ -8,6 +8,8 @@ import { createPages } from './localStPages';
 import 'aos/dist/aos.css';
 import { options, renderMovie, dateAndGenreNormalization } from './paginationRender';
 import { extractWatched } from './newLocalStorage';
+import emptyImg from '../images/empty.jpg';
+
 
 
 AOS.init();
