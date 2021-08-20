@@ -81,7 +81,6 @@ export function renderMovie(movies) {
       }
     });
   }
-
   const markup = movieCards(movies);
   listElement.innerHTML = markup;
   return markup;
