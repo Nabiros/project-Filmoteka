@@ -2,16 +2,7 @@ import NewApiService from './apiServise.js';
 import movieModalTemplate from '../templates/card-modal.hbs';
 import errorUrl from '../images/something_went_wrong.webp';
 import spinner from './spinner';
-import {
-  listElement,
-  closeModalBtn,
-  modal,
-  movieModalCard,
-  watchedBtn,
-  queueBtn,
-  watchedBtnModal,
-  queueBtnModal,
-} from '../js/refs';
+import { listElement, closeModalBtn, modal, movieModalCard } from '../js/refs';
 import {
   onWatchedLibraryBtnClick,
   onQueueLibraryBtnClick,

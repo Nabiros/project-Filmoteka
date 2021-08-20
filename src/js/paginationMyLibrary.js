@@ -1,16 +1,12 @@
 import { listElement, btnUp, paginationContainer } from '../js/refs';
-
-import errorUrl from '../images/something_went_wrong.webp';
 import { scrollPage } from './buttonUp.js';
 import Pagination from 'tui-pagination';
 import AOS from 'aos';
 import { createPages } from './localStPages';
 import 'aos/dist/aos.css';
-import { options, renderMovie, dateAndGenreNormalization } from './paginationRender';
+import { options, renderMovie } from './paginationRender';
 import { extractWatched } from './newLocalStorage';
 import emptyImg from '../images/empty.jpg';
-
-
 
 AOS.init();
 
@@ -21,14 +17,15 @@ const pagination = new Pagination(paginationContainer, options);
 export async function renderWatched() {
   const result = await extractWatched();
 
-  if (result.length === 0) {
+  if (!result || result.length === 0) {
     listElement.innerHTML = `<img  src="${emptyImg}" />`;
+  } else {
+    pagination.reset(result.length);
+    const moviesArrays = createPages(result);
+
+    const i = normalization(moviesArrays[0]);
+    renderMovie(i);
   }
-  pagination.reset(result.length );
-  const moviesArrays = createPages(result);
-  console.log(moviesArrays[0]);
-  const i = normalization(moviesArrays[0])
-  renderMovie(i);
 }
 
 pagination.on('afterMove', event => {
@@ -62,11 +59,12 @@ function genresList() {
   return JSON.parse(listOfGenres);
 }
 
-
-function normalization(data) {
+export function normalization(data) {
   const result = data.map(movie => {
     const release_date = movie.release_date ? movie.release_date.split('-')[0] : '2020-00-00'; //добавьте проверку на корректность поля movie.release_date
-    const genres = movie.genres ? movie.genres.map(ev => genresList().filter(el => el.id === ev.id)).flat() : 'n/a';
+    const genres = movie.genres
+      ? movie.genres.map(ev => genresList().filter(el => el.id === ev.id)).flat()
+      : 'n/a';
     return {
       ...movie,
       release_date: release_date,
@@ -75,5 +73,3 @@ function normalization(data) {
   });
   return result;
 }
-
-
