@@ -1,14 +1,28 @@
+.basicLightbox {
+  overflow: scroll;
+  height: 250vh;
+}
+
+.basicLightbox__placeholder {
+    @media screen and (max-width: (768px - 1)) {
+    margin: 0;
+    padding-bottom: 200%;
+  }
+
+}
 .team-wrapper {
   display: flex;
   flex-wrap: wrap;
+  color: #000;
 
   margin: -20px;
 
   @media screen and (max-width: (768px - 1)) {
-    margin-top: 70px;
+    margin-top: 380px;
+    background-color: var(--header-text);
   }
 
-  width: 370px;
+  width: 340px;
 
   background-color: var(--header-text);
   border-radius: 15px;
@@ -113,7 +127,4 @@
 
 .footer-text-dec {
   cursor: pointer;
-
 }
-
-

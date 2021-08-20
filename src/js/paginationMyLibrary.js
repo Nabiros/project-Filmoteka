@@ -22,7 +22,7 @@ export async function renderWatched() {
   if (result.length === 0) {
     listElement.innerHTML = `<img  src="${emptyImg}" />`;
   }
-  pagination.reset(result.length);
+  pagination.reset(result.length );
   const moviesArrays = createPages(result);
   console.log(moviesArrays[0]);
   const i = normalization(moviesArrays[0])
