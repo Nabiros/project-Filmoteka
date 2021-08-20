@@ -68,7 +68,8 @@ body.light-theme {
   height: 100%;
   color: transparent;
   user-select: none;
-  background-color: #333;
+  background-color: #d3d3d4;
+
   border-radius: inherit;
   z-index: 1;
   cursor: pointer;
@@ -88,7 +89,7 @@ body.light-theme {
 }
 
 .theme-switch__toggle:checked + .theme-switch__track {
-  background-color: #d3d3d4;
+  background-color: #333;
 }
 
 .theme-switch__toggle:checked ~ .theme-switch__marker {
